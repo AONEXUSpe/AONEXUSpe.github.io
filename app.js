@@ -1,4 +1,4 @@
-/* =========================================================
+ /* =========================================================
    AO NEXUS — Lógica del sitio
    ========================================================= */
 
@@ -65,7 +65,7 @@ const products = [
     sub:"16 núcleos / 32 hilos · AM5", image:"img/RYZEN_9_9500X3D.jpg",
     specs:{ "Familia":"Ryzen 9 9950X3D","Cores/Threads":"16C/32T","Frecuencia Base":"4.3 GHz","Socket":"AM5","TDP":"120W","3D V-Cache":"Sí" } },
 
-  { id:18, name:"RYZEN 9 9900X", category:"amd", price:1400, stock:1, featured:true, best:false, isNew:true,
+  { id:18, name:"RYZEN 9 9900X", category:"amd", price:1500, stock:1, featured:true, best:false, isNew:true,
     sub:"12 núcleos / 24 hilos · AM5", image:"img/RYZEN_9_9900X.jpg",
     specs:{ "Familia":"Ryzen 9 9900X","Cores/Threads":"12C/24T","Frecuencia Base":"3.9 GHz","Socket":"AM5","TDP":"120W" } },
 
