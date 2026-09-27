@@ -30,8 +30,8 @@ const categoryIcons = {
 /* ---------- Grupos de la barra superior (en este orden se muestra el catálogo) ---------- */
 const groups = {
   procesador:     { label:'Procesadores',      cats:['amd','intel'] },
-  gpu:            { label:'Tarjetas de Video', cats:['gpu'] },
   placas:         { label:'Placas Madre',      cats:['placa-am5','placa-am4','placa-lga1851'] },
+  gpu:            { label:'Tarjetas de Video', cats:['gpu'] },
   ram:            { label:'Memorias RAM',      cats:['ddr5','ddr4'] },
   almacenamiento: { label:'Almacenamiento',    cats:['almacenamiento'] },
   refrigeracion:  { label:'Refrigeración',     cats:['refrigeracion-liquida','refrigeracion-aire'] }
@@ -76,7 +76,7 @@ const products = [
     specs:{ "Núcleos / Hilos":"12C / 24T","Frecuencia base":"4.4 GHz","Frecuencia turbo":"Hasta 5.6 GHz","Socket":"AM5","TDP":"120W" } },
 
   { id:23, name:"RYZEN 7 7700X", brand:"AMD", category:"amd", price:900, stock:1, isNew:true,
-    sub:"8 núcleos / 16 hilos · AM5", image:"img/RYZEN_7_7700X.jpg",
+    sub:"8 núcleos / 16 hilos · AM5", image:"img/RYZEN_7_7700X.webp",
     specs:{ "Núcleos / Hilos":"8C / 16T","Frecuencia base":"4.5 GHz","Frecuencia turbo":"Hasta 5.4 GHz","Socket":"AM5","TDP":"105W" } },
 
   { id:1, name:"RYZEN 5 9600X", brand:"AMD", category:"amd", price:700, stock:5, best:true,
@@ -84,12 +84,12 @@ const products = [
     specs:{ "Núcleos / Hilos":"6C / 12T","Frecuencia base":"3.9 GHz","Frecuencia turbo":"Hasta 5.4 GHz","Socket":"AM5","TDP":"65W" } },
 
   { id:22, name:"RYZEN 5 5500", brand:"AMD", category:"amd", price:330, stock:1, isNew:true,
-    sub:"6 núcleos / 12 hilos · AM4", image:"img/RYZEN_5_5500.jpg",
+    sub:"6 núcleos / 12 hilos · AM4", image:"img/RYZEN_5_5500.webp",
     specs:{ "Núcleos / Hilos":"6C / 12T","Frecuencia base":"3.6 GHz","Frecuencia turbo":"Hasta 4.2 GHz","Socket":"AM4","TDP":"65W","Cooler":"Incluido (Wraith Stealth)" } },
 
   // ---- PROCESADORES INTEL ----
   { id:24, name:"INTEL CORE I7 14700K", brand:"Intel", category:"intel", price:1350, stock:1, isNew:true,
-    sub:"20 núcleos / 28 hilos · LGA1700", image:"img/INTEL_CORE_I7_14700K.jpg",
+    sub:"20 núcleos / 28 hilos · LGA1700", image:"img/INTEL_CORE_I7_14700K.webp",
     specs:{ "Núcleos / Hilos":"20C (8P + 12E) / 28T","Frecuencia turbo":"Hasta 5.6 GHz","Socket":"LGA1700","TDP":"125W","Gráficos integrados":"Intel UHD 770" } },
 
   { id:6, name:"INTEL CORE ULTRA 7 270K PLUS", brand:"Intel", category:"intel", price:1250, stock:1,
@@ -102,16 +102,16 @@ const products = [
 
   // ---- TARJETAS DE VIDEO ----
   { id:25, name:"RTX 5060 ASUS DUAL 8GB", brand:"ASUS", category:"gpu", price:1500, stock:1, isNew:true,
-    sub:"8GB GDDR7 · DLSS 4 · Ray Tracing", image:"img/RTX_5060_ASUS_DUAL.jpg",
+    sub:"8GB GDDR7 · DLSS 4 · Ray Tracing", image:"img/RTX_5060_ASUS_DUAL.webp",
     specs:{ "GPU":"NVIDIA GeForce RTX 5060","Memoria":"8GB GDDR7","Bus de memoria":"128-bit","Interfaz":"PCIe 5.0","Tecnologías":"DLSS 4 · Ray Tracing","Ventiladores":"2 (Dual)","Fuente recomendada":"550W" } },
 
   // ---- PLACAS MADRE ----
   { id:27, name:"B850-F ASUS ROG STRIX GAMING WIFI7 NEO", brand:"ASUS", category:"placa-am5", price:800, stock:1, isNew:true,
-    sub:"Socket AM5 · ATX · DDR5 · WiFi 7", image:"img/ASUS_ROG_STRIX_B850-F.jpg",
+    sub:"Socket AM5 · ATX · DDR5 · WiFi 7", image:"img/ASUS_ROG_STRIX_B850-F.webp",
     specs:{ "Modelo":"ASUS ROG STRIX B850-F GAMING WIFI NEO","Socket":"AM5","Chipset":"B850","Factor forma":"ATX","Memoria":"DDR5","WiFi":"WiFi 7" } },
 
   { id:28, name:"B850 GIGABYTE EAGLE ICE WIFI7", brand:"Gigabyte", category:"placa-am5", price:750, stock:1, isNew:true,
-    sub:"Socket AM5 · ATX · DDR5 · WiFi 7 · Blanca", image:"img/GIGABYTE_B850_EAGLE_ICE.jpg",
+    sub:"Socket AM5 · ATX · DDR5 · WiFi 7 · Blanca", image:"img/GIGABYTE_B850_EAGLE_ICE.webp",
     specs:{ "Modelo":"GIGABYTE B850 EAGLE WIFI7 ICE","Socket":"AM5","Chipset":"B850","Factor forma":"ATX","Memoria":"DDR5","WiFi":"WiFi 7","Color":"Blanco" } },
 
   { id:9, name:"B850M-E ASUS TUF GAMING WIFI", brand:"ASUS", category:"placa-am5", price:650, stock:1, best:true,
@@ -119,7 +119,7 @@ const products = [
     specs:{ "Modelo":"ASUS TUF GAMING B850M-E WIFI","Socket":"AM5","Chipset":"B850","Factor forma":"Micro-ATX","Memoria":"DDR5","WiFi":"WiFi 7" } },
 
   { id:26, name:"B850M GIGABYTE EAGLE WIFI6E", brand:"Gigabyte", category:"placa-am5", price:650, stock:1, isNew:true,
-    sub:"Socket AM5 · Micro-ATX · DDR5 · WiFi 6E", image:"img/GIGABYTE_B850M_EAGLE_WIFI6E.jpg",
+    sub:"Socket AM5 · Micro-ATX · DDR5 · WiFi 6E", image:"img/GIGABYTE_B850M_EAGLE_WIFI6E.webp",
     specs:{ "Modelo":"GIGABYTE B850M EAGLE WIFI6E","Socket":"AM5","Chipset":"B850","Factor forma":"Micro-ATX","Memoria":"DDR5","WiFi":"WiFi 6E" } },
 
   { id:19, name:"B850-S MSI PRO WIFI6E", brand:"MSI", category:"placa-am5", price:580, stock:1, featured:true,
@@ -136,7 +136,7 @@ const products = [
 
   // ---- MEMORIAS RAM ----
   { id:29, name:"CORSAIR VENGEANCE RGB 2X16GB DDR5 6400MHZ CL36 BLACK", brand:"Corsair", category:"ddr5", price:1900, stock:1, isNew:true,
-    sub:"32GB (2x16GB) DDR5 6400MHz CL36 · RGB", image:"img/CORSAIR_VENGEANCE_RGB_DDR5_6400.jpg",
+    sub:"32GB (2x16GB) DDR5 6400MHz CL36 · RGB", image:"img/CORSAIR_VENGEANCE_RGB_DDR5_6400.webp",
     specs:{ "Capacidad":"32GB (2x16GB)","Tipo":"DDR5","Velocidad":"6400 MHz","Latencia":"CL36","Iluminación":"RGB","Color":"Negro" } },
 
   { id:12, name:"TEAMGROUP T-FORCE VULCAN 2X8GB DDR5 5200MHZ", brand:"TeamGroup", category:"ddr5", price:750, stock:1, best:true,
@@ -153,11 +153,11 @@ const products = [
     specs:{ "Capacidad":"4TB","Interfaz":"NVMe PCIe Gen 4.0","Factor forma":"M.2 2280","Lectura":"5,000 MB/s","Escritura":"4,500 MB/s" } },
 
   { id:31, name:"SSD M.2 1TB ADATA LEGEND 860", brand:"ADATA", category:"almacenamiento", price:580, stock:1, isNew:true,
-    sub:"NVMe PCIe 4.0 x4 · 1TB · M.2 2280", image:"img/SSD_ADATA_LEGEND_860_1TB.jpg",
+    sub:"NVMe PCIe 4.0 x4 · 1TB · M.2 2280", image:"img/SSD_ADATA_LEGEND_860_1TB.webp",
     specs:{ "Capacidad":"1TB (1000GB)","Interfaz":"NVMe PCIe Gen 4.0 x4","Factor forma":"M.2 2280","Lectura":"Hasta 6,000 MB/s" } },
 
   { id:30, name:"SSD M.2 512GB HIKSEMI WAVE", brand:"Hiksemi", category:"almacenamiento", price:330, stock:1, isNew:true,
-    sub:"NVMe · 512GB · M.2 2280", image:"img/SSD_HIKSEMI_WAVE_512GB.jpg",
+    sub:"NVMe · 512GB · M.2 2280", image:"img/SSD_HIKSEMI_WAVE_512GB.webp",
     specs:{ "Capacidad":"512GB","Interfaz":"NVMe","Factor forma":"M.2 2280" } },
 
   // ---- REFRIGERACIÓN ----
@@ -177,8 +177,8 @@ const products = [
 /* ---------- Categorías populares (imagen tomada de un producto real) ---------- */
 const popularCategories = [
   { group:'procesador',     label:'Procesadores',      img:'img/RYZEN_7_9800X3D.jpg' },
-  { group:'gpu',            label:'Tarjetas de Video', img:'img/RTX_5060_ASUS_DUAL.jpg', icon:'fa-display' },
   { group:'placas',         label:'Placas Madre',      img:'img/B850M-E_ASUS_TUF_WIFI.jpg' },
+  { group:'gpu',            label:'Tarjetas de Video', img:'img/RTX_5060_ASUS_DUAL.webp', icon:'fa-display' },
   { group:'ram',            label:'Memorias RAM',      img:'img/TEAMGROUP_TFORCE_VULCAN_DDR5.jpg' },
   { group:'almacenamiento', label:'Almacenamiento',    img:'img/SSD_T-FORCE_G50_4TB.jpg' },
   { group:'refrigeracion',  label:'Refrigeración',     img:'img/THERMALRIGHT_ELITE_VISION_360_ARGB_WHITE.jpg' }
