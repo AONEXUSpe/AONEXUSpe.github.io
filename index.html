@@ -5,22 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>AO NEXUS - Hardware Gaming & Creación | Lima, Perú</title>
-<meta name="description" content="Tienda especializada en hardware gamer en Lima: procesadores AMD e Intel, placas madre, RAM DDR4/DDR5, SSD, fuentes de poder y refrigeración. Productos nuevos y sellados con 1 año de garantía. Recojo en Cyber Plaza.">
-<meta name="keywords" content="hardware gamer Lima, procesadores AMD, procesadores Intel, placas madre, RAM DDR5, SSD NVMe, fuente de poder, refrigeración liquida PC, Cyber Plaza, AO NEXUS">
+<meta name="description" content="Tienda especializada en hardware gamer en Lima: procesadores AMD e Intel, tarjetas de video, placas madre, RAM DDR4/DDR5, SSD NVMe y refrigeración. Productos nuevos y sellados con 1 año de garantía. Recojo en Cyber Plaza.">
+<meta name="keywords" content="hardware gamer Lima, procesadores AMD, procesadores Intel, tarjetas de video, RTX 5060, placas madre, RAM DDR5, SSD NVMe, refrigeración liquida PC, Cyber Plaza, AO NEXUS">
 <meta name="robots" content="index, follow">
+<meta name="theme-color" content="#05070f">
 <link rel="canonical" href="https://aonexus.pe/">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AO NEXUS">
 <meta property="og:title" content="AO NEXUS - Hardware Gaming & Creación">
-<meta property="og:description" content="Procesadores, placas madre, RAM, SSD, fuentes y refrigeración. Productos nuevos y sellados con 1 año de garantía. Recojo en Cyber Plaza, Lima.">
+<meta property="og:description" content="Procesadores, tarjetas de video, placas madre, RAM, SSD y refrigeración. Productos nuevos y sellados con 1 año de garantía. Recojo en Cyber Plaza, Lima.">
 <meta property="og:image" content="img/banner-hero.jpg">
 <meta property="og:locale" content="es_PE">
 <meta property="og:url" content="https://aonexus.pe/">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AO NEXUS - Hardware Gaming & Creación">
-<meta name="twitter:description" content="Hardware gamer en Lima con garantía de 1 año: procesadores, placas madre, RAM, SSD y más.">
+<meta name="twitter:description" content="Hardware gamer en Lima con garantía de 1 año: procesadores, tarjetas de video, placas madre, RAM, SSD y más.">
 <meta name="twitter:image" content="img/banner-hero.jpg">
 
 <link rel="icon" type="image/jpeg" href="img/LOGO_DE_MARCA.jpg">
@@ -39,7 +40,7 @@
     <div class="hwrap">
 
       <a class="brand" href="#" onclick="goHome();return false;" title="Ir al inicio">
-        <img src="img/LOGO_DE_MARCA.jpg" alt="AO NEXUS" class="brand-logo">
+        <img src="img/LOGO_DE_MARCA.jpg" alt="AO NEXUS" class="brand-logo" width="42" height="42">
         <span class="brand-text">AO <b>NEXUS</b></span>
       </a>
 
@@ -53,8 +54,8 @@
       </a>
 
       <div class="header-icons">
-        <a href="tel:+51936177329" class="icon-btn" title="+51 936 177 329"><i class="fas fa-user"></i></a>
-        <button class="icon-btn cart-btn" onclick="openCart()" title="Mi cotización">
+        <a href="tel:+51936177329" class="icon-btn" title="Llámanos: +51 936 177 329" aria-label="Llamar"><i class="fas fa-phone"></i></a>
+        <button class="icon-btn cart-btn" onclick="openCart()" title="Mi cotización" aria-label="Mi cotización">
           <i class="fas fa-cart-shopping"></i>
           <span class="cart-count" id="cartCount">0</span>
         </button>
@@ -69,11 +70,12 @@
     <div class="hwrap cat-nav-inner">
       <a href="#" class="cat-link" onclick="goHome();return false;"><i class="fas fa-house"></i><span>Inicio</span></a>
       <a href="#" class="cat-link" onclick="filterByGroup('procesador');return false;"><i class="fas fa-microchip"></i><span>Procesadores</span></a>
+      <a href="#" class="cat-link" onclick="filterByGroup('gpu');return false;"><i class="fas fa-display"></i><span>Tarjetas de Video</span></a>
       <a href="#" class="cat-link" onclick="filterByGroup('placas');return false;"><i class="fas fa-server"></i><span>Placas</span></a>
       <a href="#" class="cat-link" onclick="filterByGroup('ram');return false;"><i class="fas fa-memory"></i><span>RAM</span></a>
       <a href="#" class="cat-link" onclick="filterByGroup('almacenamiento');return false;"><i class="fas fa-hard-drive"></i><span>SSD</span></a>
-      <a href="#" class="cat-link" onclick="filterByGroup('fuente');return false;"><i class="fas fa-plug"></i><span>Fuentes</span></a>
       <a href="#" class="cat-link" onclick="filterByGroup('refrigeracion');return false;"><i class="fas fa-fan"></i><span>Refrigeración</span></a>
+      <a href="#" class="cat-link cat-all" onclick="showAllProducts();return false;"><i class="fas fa-grip"></i><span>Ver todo</span></a>
     </div>
   </nav>
 </header>
@@ -82,7 +84,7 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="heroSection">
-    <img src="img/banner-hero.jpg" alt="Arma tu PC gamer al mejor precio - AO NEXUS" class="hero-img">
+    <img src="img/banner-hero.jpg" alt="Arma tu PC gamer al mejor precio - AO NEXUS" class="hero-img" width="1672" height="941" fetchpriority="high">
     <div class="hero-actions">
       <button class="btn-hero-primary" onclick="showAllProducts()">VER PRODUCTOS <i class="fas fa-arrow-right"></i></button>
       <a class="btn-hero-wa" href="https://wa.me/51936177329?text=Hola%20AO%20NEXUS%2C%20quisiera%20cotizar%20una%20PC" target="_blank" rel="noopener">
@@ -110,22 +112,42 @@
     </div>
   </section>
 
-  <!-- ============ OFERTAS DESTACADAS ============ -->
+  <!-- ============ DESTACADOS ============ -->
   <section class="block" id="featuredSection">
     <div class="hwrap">
       <div class="block-head">
-        <h2 class="sec-title">Ofertas <span>Destacadas</span></h2>
-        <button class="link-more" onclick="showAllProducts()">Ver todas las ofertas <i class="fas fa-arrow-right"></i></button>
+        <div>
+          <span class="sec-kicker"><i class="fas fa-star"></i> Selección AO NEXUS</span>
+          <h2 class="sec-title">Productos <span>Destacados</span></h2>
+        </div>
+        <button class="link-more" onclick="showAllProducts()">Ver todo el catálogo <i class="fas fa-arrow-right"></i></button>
       </div>
       <div class="p-grid" id="featuredGrid"></div>
     </div>
   </section>
 
-  <!-- ============ CATEGORÍAS POPULARES ============ -->
+  <!-- ============ NUEVOS INGRESOS ============ -->
+  <section class="block block-new" id="newSection">
+    <div class="hwrap">
+      <div class="block-head">
+        <div>
+          <span class="sec-kicker"><i class="fas fa-bolt"></i> Recién llegados</span>
+          <h2 class="sec-title">Nuevos <span>Ingresos</span></h2>
+        </div>
+        <button class="link-more" onclick="showAllProducts()">Ver todo el catálogo <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="p-grid" id="newGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ CATEGORÍAS ============ -->
   <section class="block" id="categoriesSection">
     <div class="hwrap">
       <div class="block-head">
-        <h2 class="sec-title">Categorías <span>Populares</span></h2>
+        <div>
+          <span class="sec-kicker"><i class="fas fa-layer-group"></i> Explora</span>
+          <h2 class="sec-title">Compra por <span>Categoría</span></h2>
+        </div>
         <button class="link-more" onclick="showAllProducts()">Ver todas las categorías <i class="fas fa-arrow-right"></i></button>
       </div>
       <div class="c-grid" id="categoryGrid"></div>
@@ -136,16 +158,48 @@
   <section class="block" id="bestsellersSection">
     <div class="hwrap">
       <div class="block-head">
-        <h2 class="sec-title">Más <span>Vendidos</span></h2>
-        <button class="link-more" onclick="showAllProducts()">Ver más vendidos <i class="fas fa-arrow-right"></i></button>
+        <div>
+          <span class="sec-kicker"><i class="fas fa-fire"></i> Lo más pedido</span>
+          <h2 class="sec-title">Más <span>Vendidos</span></h2>
+        </div>
+        <button class="link-more" onclick="showAllProducts()">Ver todo el catálogo <i class="fas fa-arrow-right"></i></button>
       </div>
       <div class="p-grid" id="bestsellersGrid"></div>
     </div>
   </section>
 
+  <!-- ============ MARCAS ============ -->
+  <section class="block" id="brandsSection">
+    <div class="hwrap">
+      <div class="brands-box">
+        <div class="brands-head">
+          <span class="sec-kicker"><i class="fas fa-certificate"></i> Originales y sellados</span>
+          <h3>Busca por <span>marca</span></h3>
+        </div>
+        <div class="brand-row" id="brandRow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PEDIDOS ESPECIALES ============ -->
+  <section class="block" id="orderSection">
+    <div class="hwrap">
+      <div class="order-box">
+        <div class="order-icon"><i class="fas fa-box-open"></i></div>
+        <div class="order-text">
+          <h3>¿No encuentras lo que buscas?</h3>
+          <p>Lo conseguimos por pedido: fuentes de poder, cases, otras tarjetas de video, monitores y más. Te cotizamos sin compromiso.</p>
+        </div>
+        <a class="btn-order" href="https://wa.me/51936177329?text=Hola%20AO%20NEXUS%2C%20estoy%20buscando%20un%20componente%20que%20no%20veo%20en%20la%20web" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> PEDIR COTIZACIÓN
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ CTA ARMAR PC ============ -->
   <section class="help-banner" id="helpCtaSection">
-    <img src="img/banner-armar-pc.jpg" alt="¿Necesitas ayuda para armar tu PC?" class="help-img">
+    <img src="img/banner-armar-pc.jpg" alt="¿Necesitas ayuda para armar tu PC?" class="help-img" width="2172" height="724" loading="lazy">
     <a class="btn-help-wa" href="https://wa.me/51936177329?text=Hola%20AO%20NEXUS%2C%20necesito%20ayuda%20para%20armar%20mi%20PC" target="_blank" rel="noopener">
       <i class="fab fa-whatsapp"></i> HABLAR POR WHATSAPP
     </a>
@@ -158,7 +212,7 @@
   <div class="hwrap footer-grid">
 
     <div class="f-brand">
-      <img src="img/LOGO_DE_MARCA.jpg" alt="AO NEXUS" class="f-logo">
+      <img src="img/LOGO_DE_MARCA.jpg" alt="AO NEXUS" class="f-logo" width="44" height="44" loading="lazy">
       <span class="brand-text">AO <b>NEXUS</b></span>
       <p class="f-tag">Hardware que impulsa tus victorias</p>
       <div class="f-social">
@@ -210,7 +264,7 @@
   <div class="modal-card">
     <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">&times;</button>
     <div class="modal-body">
-      <div class="modal-media"><img id="modalImage" src="" alt=""></div>
+      <div class="modal-media"><div class="ph" id="modalPh"></div><img id="modalImage" src="" alt=""></div>
       <div class="modal-info">
         <span class="p-cat" id="modalCat"></span>
         <h3 id="modalName"></h3>
@@ -221,6 +275,11 @@
           <button class="btn-add" onclick="addToCartFromModal()"><i class="fas fa-cart-plus"></i> Agregar a cotización</button>
           <button class="btn-wa" onclick="contactWhatsApp()"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</button>
         </div>
+        <ul class="modal-trust">
+          <li><i class="fas fa-shield-halved"></i> Garantía 1 año</li>
+          <li><i class="fas fa-box"></i> Nuevo y sellado</li>
+          <li><i class="fas fa-store"></i> Recojo en Cyber Plaza</li>
+        </ul>
       </div>
     </div>
   </div>
