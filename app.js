@@ -59,15 +59,15 @@ const subGroups = {
    hasta que subas la imagen a /img/<CATEGORÍA>/ con el nombre indicado en "image". */
 const products = [
   // ---- PROCESADORES AMD ----
-  { id:1, name:"RYZEN 7 9800X3D", brand:"AMD", category:"amd", price:1700, stock:1, featured:true,
+  { id:1, name:"RYZEN 7 9800X3D", brand:"AMD", category:"amd", price:1750, stock:1, featured:true,
     sub:"8 núcleos / 16 hilos · 3D V-Cache · AM5", image:"img/PROCESADOR/RYZEN_7_9800X3d.webp",
     specs:{ "Núcleos / Hilos":"8C / 16T","Frecuencia base":"4.7 GHz","Frecuencia turbo":"Hasta 5.2 GHz","Socket":"AM5","TDP":"120W","3D V-Cache":"Sí" } },
 
-  { id:2, name:"RYZEN 9 9950X3D", brand:"AMD", category:"amd", price:2550, stock:1, featured:true,
+  { id:2, name:"RYZEN 9 9950X3D", brand:"AMD", category:"amd", price:2600, stock:1, featured:true,
     sub:"16 núcleos / 32 hilos · 3D V-Cache · AM5", image:"img/PROCESADOR/RYZEN_9_9500X3D.webp",
     specs:{ "Núcleos / Hilos":"16C / 32T","Frecuencia base":"4.3 GHz","Frecuencia turbo":"Hasta 5.7 GHz","Socket":"AM5","TDP":"170W","3D V-Cache":"Sí" } },
 
-  { id:3, name:"RYZEN 7 7800X3D", brand:"AMD", category:"amd", price:1400, stock:1, best:true,
+  { id:3, name:"RYZEN 7 7800X3D", brand:"AMD", category:"amd", price:1450, stock:1, best:true,
     sub:"8 núcleos / 16 hilos · 3D V-Cache · AM5", image:"img/PROCESADOR/RYZEN_7_7800X3D.webp",
     specs:{ "Núcleos / Hilos":"8C / 16T","Frecuencia base":"4.2 GHz","Frecuencia turbo":"Hasta 5.0 GHz","Socket":"AM5","TDP":"120W","3D V-Cache":"Sí" } },
 
@@ -83,20 +83,20 @@ const products = [
     sub:"6 núcleos / 12 hilos · AM5", image:"img/PROCESADOR/RYZEN_5_9600X.webp",
     specs:{ "Núcleos / Hilos":"6C / 12T","Frecuencia base":"3.9 GHz","Frecuencia turbo":"Hasta 5.4 GHz","Socket":"AM5","TDP":"65W" } },
 
-  { id:7, name:"RYZEN 5 5500", brand:"AMD", category:"amd", price:330, stock:1, isNew:true,
+  { id:7, name:"RYZEN 5 5500", brand:"AMD", category:"amd", price:340, stock:1, isNew:true,
     sub:"6 núcleos / 12 hilos · AM4", image:"img/PROCESADOR/Ryzen_5_5500.webp",
     specs:{ "Núcleos / Hilos":"6C / 12T","Frecuencia base":"3.6 GHz","Frecuencia turbo":"Hasta 4.2 GHz","Socket":"AM4","TDP":"65W","Cooler":"Incluido (Wraith Stealth)" } },
 
   // ---- PROCESADORES INTEL ----
-  { id:8, name:"INTEL CORE I7 14700K", brand:"Intel", category:"intel", price:1350, stock:1, isNew:true,
+  { id:8, name:"INTEL CORE I7 14700K", brand:"Intel", category:"intel", price:1400, stock:1, isNew:true,
     sub:"20 núcleos / 28 hilos · LGA1700", image:"img/PROCESADOR/INTEL_CORE_I7_14700K.webp",
     specs:{ "Núcleos / Hilos":"20C (8P + 12E) / 28T","Frecuencia turbo":"Hasta 5.6 GHz","Socket":"LGA1700","TDP":"125W","Gráficos integrados":"Intel UHD 770" } },
 
-  { id:9, name:"INTEL CORE ULTRA 7 270K PLUS", brand:"Intel", category:"intel", price:1250, stock:1,
+  { id:9, name:"INTEL CORE ULTRA 7 270K PLUS", brand:"Intel", category:"intel", price:1300, stock:1,
     sub:"24 núcleos / 24 hilos · LGA1851", image:"img/PROCESADOR/ULTRA_7_270K_PLUS.webp",
     specs:{ "Núcleos / Hilos":"24C (8P + 16E) / 24T","Socket":"LGA1851","TDP":"125W","Multiplicador":"Desbloqueado (K)" } },
 
-  { id:10, name:"INTEL CORE ULTRA 5 225F", brand:"Intel", category:"intel", price:450, stock:2,
+  { id:10, name:"INTEL CORE ULTRA 5 225F", brand:"Intel", category:"intel", price:500, stock:2,
     sub:"10 núcleos / 10 hilos · LGA1851", image:"img/PROCESADOR/ULTRA_5_225F.webp",
     specs:{ "Núcleos / Hilos":"10C (6P + 4E) / 10T","Frecuencia turbo":"Hasta 4.9 GHz","Socket":"LGA1851","TDP":"65W","Gráficos":"Requiere tarjeta de video" } },
 
@@ -114,7 +114,7 @@ const products = [
     sub:"Socket AM5 · ATX · DDR5 · WiFi 7 · Blanca", image:"img/PLACA/B850_GIGABYTE_EAGLE_ICE_WIFI7.webp",
     specs:{ "Modelo":"GIGABYTE B850 EAGLE WIFI7 ICE","Socket":"AM5","Chipset":"B850","Factor forma":"ATX","Memoria":"DDR5","WiFi":"WiFi 7","Color":"Blanco" } },
 
-  { id:14, name:"B850M-E ASUS TUF GAMING WIFI", brand:"ASUS", category:"placa-am5", price:650, stock:1, best:true,
+  { id:14, name:"B850M-E ASUS TUF GAMING WIFI", brand:"ASUS", category:"placa-am5", price:700, stock:0, best:true,
     sub:"Socket AM5 · Micro-ATX · DDR5 · WiFi 7", image:"img/PLACA/B850M-E_ASUS_TUF_WIFI.webp",
     specs:{ "Modelo":"ASUS TUF GAMING B850M-E WIFI","Socket":"AM5","Chipset":"B850","Factor forma":"Micro-ATX","Memoria":"DDR5","WiFi":"WiFi 7" } },
 
@@ -126,11 +126,11 @@ const products = [
     sub:"Socket AM5 · ATX · DDR5 · WiFi 6E", image:"img/PLACA/B850-S_MSI_PRO_WIFI6E.webp",
     specs:{ "Modelo":"MSI PRO B850-S WIFI6E","Socket":"AM5","Chipset":"B850","Factor forma":"ATX","Memoria":"DDR5","WiFi":"WiFi 6E" } },
 
-  { id:17, name:"B650 GIGABYTE GAMING X AX", brand:"Gigabyte", category:"placa-am5", price:580, stock:1,
+  { id:17, name:"B650 GIGABYTE GAMING X AX", brand:"Gigabyte", category:"placa-am5", price:600, stock:1,
     sub:"Socket AM5 · ATX · DDR5 · WiFi 6E", image:"img/PLACA/GIGABYTE_B650_GAMING_X_AX.webp",
     specs:{ "Modelo":"GIGABYTE B650 GAMING X AX","Socket":"AM5","Chipset":"B650","Factor forma":"ATX","Memoria":"DDR5","WiFi":"WiFi 6E" } },
 
-  { id:18, name:"B550-PLUS ASUS TUF GAMING WIFI II", brand:"ASUS", category:"placa-am4", price:480, stock:2,
+  { id:18, name:"B550-PLUS ASUS TUF GAMING WIFI II", brand:"ASUS", category:"placa-am4", price:500, stock:2,
     sub:"Socket AM4 · ATX · DDR4 · WiFi 6", image:"img/PLACA/B550_PLUS_WIFI_ll.webp",
     specs:{ "Modelo":"ASUS TUF GAMING B550-PLUS WIFI II","Socket":"AM4","Chipset":"B550","Factor forma":"ATX","Memoria":"DDR4","WiFi":"WiFi 6" } },
 
