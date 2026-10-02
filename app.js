@@ -96,6 +96,10 @@ const products = [
     sub:"24 núcleos / 24 hilos · LGA1851", image:"img/PROCESADOR/ULTRA_7_270K_PLUS.webp",
     specs:{ "Núcleos / Hilos":"24C (8P + 16E) / 24T","Socket":"LGA1851","TDP":"125W","Multiplicador":"Desbloqueado (K)" } },
 
+  { id:30, name:"INTEL CORE ULTRA 7 265K", brand:"Intel", category:"intel", price:1300, stock:1, isNew:true,
+    sub:"20 núcleos / 20 hilos · LGA1851", image:"img/PROCESADOR/ULTRA_7_265K.webp",
+    specs:{ "Núcleos / Hilos":"20C (8P + 12E) / 20T","Frecuencia turbo":"Hasta 5.5 GHz","Socket":"LGA1851","TDP":"125W","Multiplicador":"Desbloqueado (K)","Gráficos integrados":"Sí" } },
+
   { id:10, name:"INTEL CORE ULTRA 5 225F", brand:"Intel", category:"intel", price:500, stock:2,
     sub:"10 núcleos / 10 hilos · LGA1851", image:"img/PROCESADOR/ULTRA_5_225F.webp",
     specs:{ "Núcleos / Hilos":"10C (6P + 4E) / 10T","Frecuencia turbo":"Hasta 4.9 GHz","Socket":"LGA1851","TDP":"65W","Gráficos":"Requiere tarjeta de video" } },
@@ -113,6 +117,10 @@ const products = [
   { id:13, name:"B850 GIGABYTE EAGLE ICE WIFI7", brand:"Gigabyte", category:"placa-am5", price:750, stock:1, isNew:true,
     sub:"Socket AM5 · ATX · DDR5 · WiFi 7 · Blanca", image:"img/PLACA/B850_GIGABYTE_EAGLE_ICE_WIFI7.webp",
     specs:{ "Modelo":"GIGABYTE B850 EAGLE WIFI7 ICE","Socket":"AM5","Chipset":"B850","Factor forma":"ATX","Memoria":"DDR5","WiFi":"WiFi 7","Color":"Blanco" } },
+
+  { id:28, name:"B650-A ASUS ROG STRIX GAMING WIFI", brand:"ASUS", category:"placa-am5", price:700, stock:1, isNew:true,
+    sub:"Socket AM5 · ATX · DDR5 · WiFi 6E", image:"img/PLACA/B650-A_ASUS_ROG_STRIX_GAMING_WIFI.webp",
+    specs:{ "Modelo":"ASUS ROG STRIX B650-A GAMING WIFI","Socket":"AM5","Chipset":"B650","Factor forma":"ATX","Memoria":"DDR5","WiFi":"WiFi 6E" } },
 
   { id:14, name:"B850M-E ASUS TUF GAMING WIFI", brand:"ASUS", category:"placa-am5", price:700, stock:0, best:true,
     sub:"Socket AM5 · Micro-ATX · DDR5 · WiFi 7", image:"img/PLACA/B850M-E_ASUS_TUF_WIFI.webp",
@@ -133,6 +141,10 @@ const products = [
   { id:18, name:"B550-PLUS ASUS TUF GAMING WIFI II", brand:"ASUS", category:"placa-am4", price:500, stock:2,
     sub:"Socket AM4 · ATX · DDR4 · WiFi 6", image:"img/PLACA/B550_PLUS_WIFI_ll.webp",
     specs:{ "Modelo":"ASUS TUF GAMING B550-PLUS WIFI II","Socket":"AM4","Chipset":"B550","Factor forma":"ATX","Memoria":"DDR4","WiFi":"WiFi 6" } },
+
+  { id:29, name:"Z890 GIGABYTE EAGLE WIFI7", brand:"Gigabyte", category:"placa-lga1851", price:750, stock:1, isNew:true,
+    sub:"Socket LGA1851 · ATX · DDR5 · WiFi 7", image:"img/PLACA/GIGABYTE_Z890_EAGLE_WIFI7.webp",
+    specs:{ "Modelo":"GIGABYTE Z890 EAGLE WIFI7","Socket":"LGA1851 (Intel Core Ultra)","Chipset":"Z890","Factor forma":"ATX","Memoria":"DDR5","WiFi":"WiFi 7" } },
 
   // ---- MEMORIAS RAM ----
   { id:19, name:"CORSAIR VENGEANCE RGB 2X16GB DDR5 6400MHZ CL36 BLACK", brand:"Corsair", category:"ddr5", price:1900, stock:1, isNew:true,
