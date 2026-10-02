@@ -184,6 +184,10 @@ const products = [
     sub:"Líquida AIO 240mm · Negro", image:"img/REFRIGERACION/COOLERMASTER_ELITE_240MM.webp",
     specs:{ "Tipo":"Refrigeración líquida AIO","Radiador":"240mm","Ventiladores":"2x 120mm","Compatibilidad":"Intel & AMD","Color":"Negro" } },
 
+  { id:32, name:"COOLERMASTER ELITE 240MM WHITE", brand:"Cooler Master", category:"refrigeracion-liquida", price:120, stock:1,
+    sub:"Líquida AIO 240mm · Blanco", image:"img/REFRIGERACION/COOLERMASTER_ELITE_240MM_WHITE.webp",
+    specs:{ "Tipo":"Refrigeración líquida AIO","Radiador":"240mm","Ventiladores":"2x 120mm","Compatibilidad":"Intel & AMD","Color":"Blanco" } },
+
   { id:27, name:"THERMALRIGHT PEERLESS ASSASSIN 120 DIGITAL ARGB WHITE", brand:"Thermalright", category:"refrigeracion-aire", price:170, stock:2, best:true,
     sub:"Doble torre · Pantalla digital · ARGB · Blanco", image:"img/REFRIGERACION/THERMALRIGHT_RGB.webp",
     specs:{ "Tipo":"Disipador por aire doble torre","TDP":"245W","Ventiladores":"2x 120mm ARGB","Pantalla":"Digital (temperatura CPU)","Compatibilidad":"Intel LGA1700/1851 & AMD AM4/AM5","Color":"Blanco" } }
