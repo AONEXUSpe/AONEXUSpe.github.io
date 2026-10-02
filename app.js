@@ -52,7 +52,6 @@ const subGroups = {
 };
 
 /* ---------- Catálogo ----------
-   isNew:true    -> aparece en "Nuevos ingresos" con la etiqueta NUEVO
    featured:true -> aparece en "Destacados"
    best:true     -> aparece en "Más vendidos"
    Si falta la foto de un producto, la web muestra una tarjeta con su marca
@@ -75,7 +74,7 @@ const products = [
     sub:"12 núcleos / 24 hilos · AM5", image:"img/PROCESADOR/RYZEN_9_9900X.webp",
     specs:{ "Núcleos / Hilos":"12C / 24T","Frecuencia base":"4.4 GHz","Frecuencia turbo":"Hasta 5.6 GHz","Socket":"AM5","TDP":"120W" } },
 
-  { id:5, name:"RYZEN 7 7700X", brand:"AMD", category:"amd", price:900, stock:1, isNew:true,
+  { id:5, name:"RYZEN 7 7700X", brand:"AMD", category:"amd", price:900, stock:1,
     sub:"8 núcleos / 16 hilos · AM5", image:"img/PROCESADOR/RYZEN_7_7700X.webp",
     specs:{ "Núcleos / Hilos":"8C / 16T","Frecuencia base":"4.5 GHz","Frecuencia turbo":"Hasta 5.4 GHz","Socket":"AM5","TDP":"105W" } },
 
@@ -83,12 +82,12 @@ const products = [
     sub:"6 núcleos / 12 hilos · AM5", image:"img/PROCESADOR/RYZEN_5_9600X.webp",
     specs:{ "Núcleos / Hilos":"6C / 12T","Frecuencia base":"3.9 GHz","Frecuencia turbo":"Hasta 5.4 GHz","Socket":"AM5","TDP":"65W" } },
 
-  { id:7, name:"RYZEN 5 5500", brand:"AMD", category:"amd", price:340, stock:1, isNew:true,
+  { id:7, name:"RYZEN 5 5500", brand:"AMD", category:"amd", price:340, stock:1,
     sub:"6 núcleos / 12 hilos · AM4", image:"img/PROCESADOR/Ryzen_5_5500.webp",
     specs:{ "Núcleos / Hilos":"6C / 12T","Frecuencia base":"3.6 GHz","Frecuencia turbo":"Hasta 4.2 GHz","Socket":"AM4","TDP":"65W","Cooler":"Incluido (Wraith Stealth)" } },
 
   // ---- PROCESADORES INTEL ----
-  { id:8, name:"INTEL CORE I7 14700K", brand:"Intel", category:"intel", price:1400, stock:1, isNew:true,
+  { id:8, name:"INTEL CORE I7 14700K", brand:"Intel", category:"intel", price:1400, stock:1,
     sub:"20 núcleos / 28 hilos · LGA1700", image:"img/PROCESADOR/INTEL_CORE_I7_14700K.webp",
     specs:{ "Núcleos / Hilos":"20C (8P + 12E) / 28T","Frecuencia turbo":"Hasta 5.6 GHz","Socket":"LGA1700","TDP":"125W","Gráficos integrados":"Intel UHD 770" } },
 
@@ -96,7 +95,7 @@ const products = [
     sub:"24 núcleos / 24 hilos · LGA1851", image:"img/PROCESADOR/ULTRA_7_270K_PLUS.webp",
     specs:{ "Núcleos / Hilos":"24C (8P + 16E) / 24T","Socket":"LGA1851","TDP":"125W","Multiplicador":"Desbloqueado (K)" } },
 
-  { id:30, name:"INTEL CORE ULTRA 7 265K", brand:"Intel", category:"intel", price:1300, stock:1, isNew:true,
+  { id:30, name:"INTEL CORE ULTRA 7 265K", brand:"Intel", category:"intel", price:1300, stock:1,
     sub:"20 núcleos / 20 hilos · LGA1851", image:"img/PROCESADOR/ULTRA_7_265K.webp",
     specs:{ "Núcleos / Hilos":"20C (8P + 12E) / 20T","Frecuencia turbo":"Hasta 5.5 GHz","Socket":"LGA1851","TDP":"125W","Multiplicador":"Desbloqueado (K)","Gráficos integrados":"Sí" } },
 
@@ -105,20 +104,20 @@ const products = [
     specs:{ "Núcleos / Hilos":"10C (6P + 4E) / 10T","Frecuencia turbo":"Hasta 4.9 GHz","Socket":"LGA1851","TDP":"65W","Gráficos":"Requiere tarjeta de video" } },
 
   // ---- TARJETAS DE VIDEO ----
-  { id:11, name:"RTX 5060 ASUS DUAL 8GB", brand:"ASUS", category:"gpu", price:1500, stock:1, isNew:true,
+  { id:11, name:"RTX 5060 ASUS DUAL 8GB", brand:"ASUS", category:"gpu", price:1500, stock:1,
     sub:"8GB GDDR7 · DLSS 4 · Ray Tracing", image:"img/GRAFICAS/RTX_5060_8GB.webp",
     specs:{ "GPU":"NVIDIA GeForce RTX 5060","Memoria":"8GB GDDR7","Bus de memoria":"128-bit","Interfaz":"PCIe 5.0","Tecnologías":"DLSS 4 · Ray Tracing","Ventiladores":"2 (Dual)","Fuente recomendada":"550W" } },
 
   // ---- PLACAS MADRE ----
-  { id:12, name:"B850-F ASUS ROG STRIX GAMING WIFI7 NEO", brand:"ASUS", category:"placa-am5", price:800, stock:1, isNew:true,
+  { id:12, name:"B850-F ASUS ROG STRIX GAMING WIFI7 NEO", brand:"ASUS", category:"placa-am5", price:800, stock:1,
     sub:"Socket AM5 · ATX · DDR5 · WiFi 7", image:"img/PLACA/B850-F_ASUS_ROG_STRIX_GAMING_WIFI7_NEO.webp",
     specs:{ "Modelo":"ASUS ROG STRIX B850-F GAMING WIFI NEO","Socket":"AM5","Chipset":"B850","Factor forma":"ATX","Memoria":"DDR5","WiFi":"WiFi 7" } },
 
-  { id:13, name:"B850 GIGABYTE EAGLE ICE WIFI7", brand:"Gigabyte", category:"placa-am5", price:750, stock:1, isNew:true,
+  { id:13, name:"B850 GIGABYTE EAGLE ICE WIFI7", brand:"Gigabyte", category:"placa-am5", price:750, stock:1,
     sub:"Socket AM5 · ATX · DDR5 · WiFi 7 · Blanca", image:"img/PLACA/B850_GIGABYTE_EAGLE_ICE_WIFI7.webp",
     specs:{ "Modelo":"GIGABYTE B850 EAGLE WIFI7 ICE","Socket":"AM5","Chipset":"B850","Factor forma":"ATX","Memoria":"DDR5","WiFi":"WiFi 7","Color":"Blanco" } },
 
-  { id:28, name:"B650-A ASUS ROG STRIX GAMING WIFI", brand:"ASUS", category:"placa-am5", price:700, stock:1, isNew:true,
+  { id:28, name:"B650-A ASUS ROG STRIX GAMING WIFI", brand:"ASUS", category:"placa-am5", price:700, stock:1,
     sub:"Socket AM5 · ATX · DDR5 · WiFi 6E", image:"img/PLACA/B650-A_ASUS_ROG_STRIX_GAMING_WIFI.webp",
     specs:{ "Modelo":"ASUS ROG STRIX B650-A GAMING WIFI","Socket":"AM5","Chipset":"B650","Factor forma":"ATX","Memoria":"DDR5","WiFi":"WiFi 6E" } },
 
@@ -126,7 +125,7 @@ const products = [
     sub:"Socket AM5 · Micro-ATX · DDR5 · WiFi 7", image:"img/PLACA/B850M-E_ASUS_TUF_WIFI.webp",
     specs:{ "Modelo":"ASUS TUF GAMING B850M-E WIFI","Socket":"AM5","Chipset":"B850","Factor forma":"Micro-ATX","Memoria":"DDR5","WiFi":"WiFi 7" } },
 
-  { id:15, name:"B850M GIGABYTE EAGLE WIFI6E", brand:"Gigabyte", category:"placa-am5", price:650, stock:1, isNew:true,
+  { id:15, name:"B850M GIGABYTE EAGLE WIFI6E", brand:"Gigabyte", category:"placa-am5", price:650, stock:1,
     sub:"Socket AM5 · Micro-ATX · DDR5 · WiFi 6E", image:"img/PLACA/GIGABYTE_B850M_EAGLE_WIFI6E.webp",
     specs:{ "Modelo":"GIGABYTE B850M EAGLE WIFI6E","Socket":"AM5","Chipset":"B850","Factor forma":"Micro-ATX","Memoria":"DDR5","WiFi":"WiFi 6E" } },
 
@@ -142,16 +141,16 @@ const products = [
     sub:"Socket AM4 · ATX · DDR4 · WiFi 6", image:"img/PLACA/B550_PLUS_WIFI_ll.webp",
     specs:{ "Modelo":"ASUS TUF GAMING B550-PLUS WIFI II","Socket":"AM4","Chipset":"B550","Factor forma":"ATX","Memoria":"DDR4","WiFi":"WiFi 6" } },
 
-  { id:29, name:"Z890 GIGABYTE EAGLE WIFI7", brand:"Gigabyte", category:"placa-lga1851", price:750, stock:1, isNew:true,
+  { id:29, name:"Z890 GIGABYTE EAGLE WIFI7", brand:"Gigabyte", category:"placa-lga1851", price:750, stock:1,
     sub:"Socket LGA1851 · ATX · DDR5 · WiFi 7", image:"img/PLACA/GIGABYTE_Z890_EAGLE_WIFI7.webp",
     specs:{ "Modelo":"GIGABYTE Z890 EAGLE WIFI7","Socket":"LGA1851 (Intel Core Ultra)","Chipset":"Z890","Factor forma":"ATX","Memoria":"DDR5","WiFi":"WiFi 7" } },
 
   // ---- MEMORIAS RAM ----
-  { id:19, name:"CORSAIR VENGEANCE RGB 2X16GB DDR5 6400MHZ CL36 BLACK", brand:"Corsair", category:"ddr5", price:1900, stock:1, isNew:true,
+  { id:19, name:"CORSAIR VENGEANCE RGB 2X16GB DDR5 6400MHZ CL36 BLACK", brand:"Corsair", category:"ddr5", price:1900, stock:1,
     sub:"32GB (2x16GB) DDR5 6400MHz CL36 · RGB", image:"img/RAM/CORSAIR_VENGEANCE_RGB_DDR5_6400.webp",
     specs:{ "Capacidad":"32GB (2x16GB)","Tipo":"DDR5","Velocidad":"6400 MHz","Latencia":"CL36","Iluminación":"RGB","Color":"Negro" } },
 
-  { id:31, name:"SILICON POWER XPOWER CYCLONE RGB 2X16GB DDR5 7200MHZ CL34", brand:"Silicon Power", category:"ddr5", price:1850, stock:1, isNew:true,
+  { id:31, name:"SILICON POWER XPOWER CYCLONE RGB 2X16GB DDR5 7200MHZ CL34", brand:"Silicon Power", category:"ddr5", price:1850, stock:1,
     sub:"32GB (2x16GB) DDR5 7200MT/s CL34 · RGB", image:"img/RAM/SILICON_POWER_CYCLONE_RGB_DDR5_7200.webp",
     specs:{ "Capacidad":"32GB (2x16GB)","Tipo":"DDR5","Velocidad":"7200 MT/s","Latencia":"CL34 (34-42-42-82)","Iluminación":"RGB" } },
 
@@ -168,11 +167,11 @@ const products = [
     sub:"NVMe PCIe 4.0 · 4TB · 5,000 MB/s", image:"img/SSD/SSD_T-FORCE_G50_4TB.webp",
     specs:{ "Capacidad":"4TB","Interfaz":"NVMe PCIe Gen 4.0","Factor forma":"M.2 2280","Lectura":"5,000 MB/s","Escritura":"4,500 MB/s" } },
 
-  { id:23, name:"SSD M.2 1TB ADATA LEGEND 860", brand:"ADATA", category:"almacenamiento", price:580, stock:1, isNew:true,
+  { id:23, name:"SSD M.2 1TB ADATA LEGEND 860", brand:"ADATA", category:"almacenamiento", price:580, stock:1,
     sub:"NVMe PCIe 4.0 x4 · 1TB · M.2 2280", image:"img/SSD/SSD_ADATA_LEGEND_860_1TB.webp",
     specs:{ "Capacidad":"1TB (1000GB)","Interfaz":"NVMe PCIe Gen 4.0 x4","Factor forma":"M.2 2280","Lectura":"Hasta 6,000 MB/s" } },
 
-  { id:24, name:"SSD M.2 512GB HIKSEMI WAVE", brand:"Hiksemi", category:"almacenamiento", price:330, stock:1, isNew:true,
+  { id:24, name:"SSD M.2 512GB HIKSEMI WAVE", brand:"Hiksemi", category:"almacenamiento", price:330, stock:1,
     sub:"NVMe PCIe 3.0 · 512GB · M.2 2280", image:"img/SSD/SSD_HIKSEMI_WAVE_512GB.webp",
     specs:{ "Capacidad":"512GB","Interfaz":"NVMe PCIe Gen 3.0","Factor forma":"M.2 2280" } },
 
@@ -280,8 +279,7 @@ function productCard(p){
   const cat = categoryLabels[p.category] || '';
   const hasSale = p.oldPrice && p.oldPrice > p.price;
   const off = hasSale ? Math.round((1 - p.price / p.oldPrice) * 100) : 0;
-  const badge = hasSale ? `<span class="p-badge">-${off}%</span>`
-              : p.isNew ? `<span class="p-badge new">NUEVO</span>` : '';
+  const badge = hasSale ? `<span class="p-badge">-${off}%</span>` : '';
 
   return `
   <article class="p-card">
@@ -342,7 +340,6 @@ function renderHome(){
     document.getElementById(gridId).innerHTML = list.map(productCard).join('');
     document.getElementById(sectionId).hidden = list.length === 0;
   };
-  fill('newGrid',         'newSection',         pick(p => p.isNew,    10));
   fill('featuredGrid',    'featuredSection',    pick(p => p.featured,  5));
   fill('bestsellersGrid', 'bestsellersSection', pick(p => p.best,      5));
 
@@ -369,7 +366,7 @@ function renderHome(){
 
 }
 
-const homeSections = ['heroSection','newSection','featuredSection','categoriesSection',
+const homeSections = ['heroSection','featuredSection','categoriesSection',
                       'bestsellersSection','brandsSection','orderSection','helpCtaSection'];
 
 function showHomeSections(show){
@@ -560,8 +557,7 @@ function openModal(id){
   img.alt = p.name;
   document.getElementById('modalCat').textContent  = categoryLabels[p.category] || '';
   document.getElementById('modalName').textContent = p.name;
-  document.getElementById('modalStock').innerHTML  = `<span class="p-stock ${s.cls}"><span class="dot"></span>${s.text}</span>`
-    + (p.isNew ? '<span class="p-badge new static">NUEVO INGRESO</span>' : '');
+  document.getElementById('modalStock').innerHTML  = `<span class="p-stock ${s.cls}"><span class="dot"></span>${s.text}</span>`;
   document.getElementById('modalPrice').textContent = money(p.price);
   document.getElementById('modalSpecs').innerHTML = Object.entries(p.specs)
     .map(([k,v]) => `<div class="spec-row"><span>${esc(k)}</span><span>${esc(v)}</span></div>`).join('');
