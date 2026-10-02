@@ -151,6 +151,10 @@ const products = [
     sub:"32GB (2x16GB) DDR5 6400MHz CL36 · RGB", image:"img/RAM/CORSAIR_VENGEANCE_RGB_DDR5_6400.webp",
     specs:{ "Capacidad":"32GB (2x16GB)","Tipo":"DDR5","Velocidad":"6400 MHz","Latencia":"CL36","Iluminación":"RGB","Color":"Negro" } },
 
+  { id:31, name:"SILICON POWER XPOWER CYCLONE RGB 32GB DDR5 7200MHZ", brand:"Silicon Power", category:"ddr5", price:1850, stock:1, isNew:true,
+    sub:"32GB DDR5 7200MT/s · RGB", image:"img/RAM/SILICON_POWER_CYCLONE_RGB_DDR5_7200.webp",
+    specs:{ "Capacidad":"32GB","Tipo":"DDR5","Velocidad":"7200 MT/s","Iluminación":"RGB" } },
+
   { id:20, name:"TEAMGROUP T-FORCE VULCAN 2X8GB DDR5 5200MHZ", brand:"TeamGroup", category:"ddr5", price:750, stock:1, best:true,
     sub:"16GB (2x8GB) DDR5 5200MHz", image:"img/RAM/TEAMGROUP_TFORCE_VULCAN_DDR5.webp",
     specs:{ "Capacidad":"16GB (2x8GB)","Tipo":"DDR5","Velocidad":"5200 MHz","Voltaje":"1.25V","Color":"Negro" } },
