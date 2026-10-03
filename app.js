@@ -152,7 +152,7 @@ const products = [
 
   { id:31, name:"SILICON POWER XPOWER CYCLONE RGB 2X16GB DDR5 7200MHZ CL34", brand:"Silicon Power", category:"ddr5", price:1850, stock:1,
     sub:"32GB (2x16GB) DDR5 7200MT/s CL34 · RGB", image:"img/RAM/SILICON_POWER_CYCLONE_RGB_DDR5_7200.webp",
-    specs:{ "Capacidad":"32GB (2x16GB)","Tipo":"DDR5","Velocidad":"7200 MT/s","Latencia":"CL34 (34-42-42-82)","Iluminación":"RGB" } },
+    specs:{ "Capacidad":"32GB (2x16GB)","Tipo":"DDR5","Velocidad":"7200 MT/s","Latencia":"CL34","Iluminación":"RGB" } },
 
   { id:20, name:"TEAMGROUP T-FORCE VULCAN 2X8GB DDR5 5200MHZ", brand:"TeamGroup", category:"ddr5", price:750, stock:1, best:true,
     sub:"16GB (2x8GB) DDR5 5200MHz", image:"img/RAM/TEAMGROUP_TFORCE_VULCAN_DDR5.webp",
