@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-04T02:18:37.601Z",
+  "actualizado": "2026-10-04T02:19:47.045Z",
   "productos": [
     {
       "id": 2,
@@ -45,7 +45,7 @@
       "brand": "AMD",
       "category": "amd",
       "price": 1450,
-      "stock": 1,
+      "stock": 2,
       "best": true,
       "sub": "8 núcleos / 16 hilos · 3D V-Cache · AM5",
       "image": "img/PROCESADOR/RYZEN_7_7800X3D.webp",
