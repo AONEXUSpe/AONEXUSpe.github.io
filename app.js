@@ -4,210 +4,37 @@
 
 const WA_NUMBER = '51936177329';
 
-/* ---------- Etiquetas de categoría ---------- */
-const categoryLabels = {
-  "amd":"Procesador AMD",
-  "intel":"Procesador Intel",
-  "gpu":"Tarjeta de Video",
-  "placa-am4":"Placa Madre · AM4",
-  "placa-am5":"Placa Madre · AM5",
-  "placa-lga1851":"Placa Madre · LGA1851",
-  "ddr4":"Memoria RAM DDR4",
-  "ddr5":"Memoria RAM DDR5",
-  "almacenamiento":"Almacenamiento SSD",
-  "refrigeracion-liquida":"Refrigeración Líquida",
-  "refrigeracion-aire":"Refrigeración de Aire"
-};
+/* ---------- Categorías (definidas en categorias.js) ---------- */
+const categoryLabels = Object.fromEntries(Object.entries(CATEGORIAS).map(([k, c]) => [k, c.label]));
 
-/* ---------- Icono por categoría (se usa cuando falta la foto) ---------- */
-const categoryIcons = {
-  "amd":"fa-microchip", "intel":"fa-microchip", "gpu":"fa-display",
-  "placa-am4":"fa-server", "placa-am5":"fa-server", "placa-lga1851":"fa-server",
-  "ddr4":"fa-memory", "ddr5":"fa-memory", "almacenamiento":"fa-hard-drive",
-  "refrigeracion-liquida":"fa-fan", "refrigeracion-aire":"fa-fan"
-};
+/* Grupos de la barra superior, en el orden de GRUPOS */
+const groups = Object.fromEntries(Object.entries(GRUPOS).map(([g, info]) => [g, {
+  label: info.label,
+  cats: Object.keys(CATEGORIAS).filter(c => CATEGORIAS[c].grupo === g)
+}]));
 
-/* ---------- Grupos de la barra superior (en este orden se muestra el catálogo) ---------- */
-const groups = {
-  procesador:     { label:'Procesadores',      cats:['amd','intel'] },
-  placas:         { label:'Placas Madre',      cats:['placa-am5','placa-am4','placa-lga1851'] },
-  gpu:            { label:'Tarjetas de Video', cats:['gpu'] },
-  ram:            { label:'Memorias RAM',      cats:['ddr5','ddr4'] },
-  almacenamiento: { label:'Almacenamiento',    cats:['almacenamiento'] },
-  refrigeracion:  { label:'Refrigeración',     cats:['refrigeracion-liquida','refrigeracion-aire'] }
-};
+/* Los grupos con varias categorías se muestran divididos en secciones */
+const subGroups = Object.fromEntries(Object.entries(groups)
+  .filter(([, g]) => g.cats.length > 1)
+  .map(([k, g]) => [k, g.cats.map(c => ({ label: CATEGORIAS[c].seccion || CATEGORIAS[c].label, cats: [c] }))]));
 
-/* ---------- Subgrupos: cada categoría de la barra que debe verse
-   dividida en secciones separadas dentro del catálogo ---------- */
-const subGroups = {
-  procesador:    [ { label:'AMD Ryzen',               cats:['amd'] },
-                   { label:'Intel Core',              cats:['intel'] } ],
-  placas:        [ { label:'AMD · Socket AM5',        cats:['placa-am5'] },
-                   { label:'AMD · Socket AM4',        cats:['placa-am4'] },
-                   { label:'Intel · Socket LGA1851',  cats:['placa-lga1851'] } ],
-  ram:           [ { label:'DDR5',                    cats:['ddr5'] },
-                   { label:'DDR4',                    cats:['ddr4'] } ],
-  refrigeracion: [ { label:'Refrigeración Líquida',   cats:['refrigeracion-liquida'] },
-                   { label:'Torre de Aire',            cats:['refrigeracion-aire'] } ]
-};
+/* ---------- Catálogo: se carga desde productos.json ----------
+   Los productos se editan desde el panel de stock (admin.html).
+   Solo se muestran los que tienen unidades en stock. */
+let products = [];
 
-/* ---------- Catálogo ----------
-   featured:true -> aparece en "Destacados"
-   best:true     -> aparece en "Más vendidos"
-   Si falta la foto de un producto, la web muestra una tarjeta con su marca
-   hasta que subas la imagen a /img/<CATEGORÍA>/ con el nombre indicado en "image". */
-const products = [
-  // ---- PROCESADORES AMD ----
-  { id:1, name:"RYZEN 7 9800X3D", brand:"AMD", category:"amd", price:1750, stock:1, featured:true,
-    sub:"8 núcleos / 16 hilos · 3D V-Cache · AM5", image:"img/PROCESADOR/RYZEN_7_9800X3d.webp",
-    specs:{ "Núcleos / Hilos":"8C / 16T","Frecuencia base":"4.7 GHz","Frecuencia turbo":"Hasta 5.2 GHz","Socket":"AM5","TDP":"120W","3D V-Cache":"Sí" } },
-
-  { id:2, name:"RYZEN 9 9950X3D", brand:"AMD", category:"amd", price:2600, stock:1, featured:true,
-    sub:"16 núcleos / 32 hilos · 3D V-Cache · AM5", image:"img/PROCESADOR/RYZEN_9_9500X3D.webp",
-    specs:{ "Núcleos / Hilos":"16C / 32T","Frecuencia base":"4.3 GHz","Frecuencia turbo":"Hasta 5.7 GHz","Socket":"AM5","TDP":"170W","3D V-Cache":"Sí" } },
-
-  { id:3, name:"RYZEN 7 7800X3D", brand:"AMD", category:"amd", price:1450, stock:1, best:true,
-    sub:"8 núcleos / 16 hilos · 3D V-Cache · AM5", image:"img/PROCESADOR/RYZEN_7_7800X3D.webp",
-    specs:{ "Núcleos / Hilos":"8C / 16T","Frecuencia base":"4.2 GHz","Frecuencia turbo":"Hasta 5.0 GHz","Socket":"AM5","TDP":"120W","3D V-Cache":"Sí" } },
-
-  { id:4, name:"RYZEN 9 9900X", brand:"AMD", category:"amd", price:1400, stock:1,
-    sub:"12 núcleos / 24 hilos · AM5", image:"img/PROCESADOR/RYZEN_9_9900X.webp",
-    specs:{ "Núcleos / Hilos":"12C / 24T","Frecuencia base":"4.4 GHz","Frecuencia turbo":"Hasta 5.6 GHz","Socket":"AM5","TDP":"120W" } },
-
-  { id:5, name:"RYZEN 7 7700X", brand:"AMD", category:"amd", price:900, stock:1,
-    sub:"8 núcleos / 16 hilos · AM5", image:"img/PROCESADOR/RYZEN_7_7700X.webp",
-    specs:{ "Núcleos / Hilos":"8C / 16T","Frecuencia base":"4.5 GHz","Frecuencia turbo":"Hasta 5.4 GHz","Socket":"AM5","TDP":"105W" } },
-
-  { id:6, name:"RYZEN 5 9600X", brand:"AMD", category:"amd", price:700, stock:5, best:true,
-    sub:"6 núcleos / 12 hilos · AM5", image:"img/PROCESADOR/RYZEN_5_9600X.webp",
-    specs:{ "Núcleos / Hilos":"6C / 12T","Frecuencia base":"3.9 GHz","Frecuencia turbo":"Hasta 5.4 GHz","Socket":"AM5","TDP":"65W" } },
-
-  { id:7, name:"RYZEN 5 5500", brand:"AMD", category:"amd", price:340, stock:1,
-    sub:"6 núcleos / 12 hilos · AM4", image:"img/PROCESADOR/Ryzen_5_5500.webp",
-    specs:{ "Núcleos / Hilos":"6C / 12T","Frecuencia base":"3.6 GHz","Frecuencia turbo":"Hasta 4.2 GHz","Socket":"AM4","TDP":"65W","Cooler":"Incluido (Wraith Stealth)" } },
-
-  // ---- PROCESADORES INTEL ----
-  { id:8, name:"INTEL CORE I7 14700K", brand:"Intel", category:"intel", price:1400, stock:1,
-    sub:"20 núcleos / 28 hilos · LGA1700", image:"img/PROCESADOR/INTEL_CORE_I7_14700K.webp",
-    specs:{ "Núcleos / Hilos":"20C (8P + 12E) / 28T","Frecuencia turbo":"Hasta 5.6 GHz","Socket":"LGA1700","TDP":"125W","Gráficos integrados":"Intel UHD 770" } },
-
-  { id:9, name:"INTEL CORE ULTRA 7 270K PLUS", brand:"Intel", category:"intel", price:1300, stock:1,
-    sub:"24 núcleos / 24 hilos · LGA1851", image:"img/PROCESADOR/ULTRA_7_270K_PLUS.webp",
-    specs:{ "Núcleos / Hilos":"24C (8P + 16E) / 24T","Socket":"LGA1851","TDP":"125W","Multiplicador":"Desbloqueado (K)" } },
-
-  { id:30, name:"INTEL CORE ULTRA 7 265K", brand:"Intel", category:"intel", price:1300, stock:1,
-    sub:"20 núcleos / 20 hilos · LGA1851", image:"img/PROCESADOR/ULTRA_7_265K.webp",
-    specs:{ "Núcleos / Hilos":"20C (8P + 12E) / 20T","Frecuencia turbo":"Hasta 5.5 GHz","Socket":"LGA1851","TDP":"125W","Multiplicador":"Desbloqueado (K)","Gráficos integrados":"Sí" } },
-
-  { id:10, name:"INTEL CORE ULTRA 5 225F", brand:"Intel", category:"intel", price:500, stock:2,
-    sub:"10 núcleos / 10 hilos · LGA1851", image:"img/PROCESADOR/ULTRA_5_225F.webp",
-    specs:{ "Núcleos / Hilos":"10C (6P + 4E) / 10T","Frecuencia turbo":"Hasta 4.9 GHz","Socket":"LGA1851","TDP":"65W","Gráficos":"Requiere tarjeta de video" } },
-
-  // ---- TARJETAS DE VIDEO ----
-  { id:11, name:"RTX 5060 ASUS DUAL 8GB", brand:"ASUS", category:"gpu", price:1500, stock:1,
-    sub:"8GB GDDR7 · DLSS 4 · Ray Tracing", image:"img/GRAFICAS/RTX_5060_8GB.webp",
-    specs:{ "GPU":"NVIDIA GeForce RTX 5060","Memoria":"8GB GDDR7","Bus de memoria":"128-bit","Interfaz":"PCIe 5.0","Tecnologías":"DLSS 4 · Ray Tracing","Ventiladores":"2 (Dual)","Fuente recomendada":"550W" } },
-
-  // ---- PLACAS MADRE ----
-  { id:12, name:"B850-F ASUS ROG STRIX GAMING WIFI7 NEO", brand:"ASUS", category:"placa-am5", price:800, stock:1,
-    sub:"Socket AM5 · ATX · DDR5 · WiFi 7", image:"img/PLACA/B850-F_ASUS_ROG_STRIX_GAMING_WIFI7_NEO.webp",
-    specs:{ "Modelo":"ASUS ROG STRIX B850-F GAMING WIFI NEO","Socket":"AM5","Chipset":"B850","Factor forma":"ATX","Memoria":"DDR5","WiFi":"WiFi 7" } },
-
-  { id:13, name:"B850 GIGABYTE EAGLE ICE WIFI7", brand:"Gigabyte", category:"placa-am5", price:750, stock:1,
-    sub:"Socket AM5 · ATX · DDR5 · WiFi 7 · Blanca", image:"img/PLACA/B850_GIGABYTE_EAGLE_ICE_WIFI7.webp",
-    specs:{ "Modelo":"GIGABYTE B850 EAGLE WIFI7 ICE","Socket":"AM5","Chipset":"B850","Factor forma":"ATX","Memoria":"DDR5","WiFi":"WiFi 7","Color":"Blanco" } },
-
-  { id:28, name:"B650-A ASUS ROG STRIX GAMING WIFI", brand:"ASUS", category:"placa-am5", price:700, stock:1,
-    sub:"Socket AM5 · ATX · DDR5 · WiFi 6E", image:"img/PLACA/B650-A_ASUS_ROG_STRIX_GAMING_WIFI.webp",
-    specs:{ "Modelo":"ASUS ROG STRIX B650-A GAMING WIFI","Socket":"AM5","Chipset":"B650","Factor forma":"ATX","Memoria":"DDR5","WiFi":"WiFi 6E" } },
-
-  { id:14, name:"B850M-E ASUS TUF GAMING WIFI", brand:"ASUS", category:"placa-am5", price:700, stock:0, best:true,
-    sub:"Socket AM5 · Micro-ATX · DDR5 · WiFi 7", image:"img/PLACA/B850M-E_ASUS_TUF_WIFI.webp",
-    specs:{ "Modelo":"ASUS TUF GAMING B850M-E WIFI","Socket":"AM5","Chipset":"B850","Factor forma":"Micro-ATX","Memoria":"DDR5","WiFi":"WiFi 7" } },
-
-  { id:15, name:"B850M GIGABYTE EAGLE WIFI6E", brand:"Gigabyte", category:"placa-am5", price:650, stock:1,
-    sub:"Socket AM5 · Micro-ATX · DDR5 · WiFi 6E", image:"img/PLACA/GIGABYTE_B850M_EAGLE_WIFI6E.webp",
-    specs:{ "Modelo":"GIGABYTE B850M EAGLE WIFI6E","Socket":"AM5","Chipset":"B850","Factor forma":"Micro-ATX","Memoria":"DDR5","WiFi":"WiFi 6E" } },
-
-  { id:16, name:"B850-S MSI PRO WIFI6E", brand:"MSI", category:"placa-am5", price:580, stock:1, featured:true,
-    sub:"Socket AM5 · ATX · DDR5 · WiFi 6E", image:"img/PLACA/B850-S_MSI_PRO_WIFI6E.webp",
-    specs:{ "Modelo":"MSI PRO B850-S WIFI6E","Socket":"AM5","Chipset":"B850","Factor forma":"ATX","Memoria":"DDR5","WiFi":"WiFi 6E" } },
-
-  { id:17, name:"B650 GIGABYTE GAMING X AX", brand:"Gigabyte", category:"placa-am5", price:600, stock:1,
-    sub:"Socket AM5 · ATX · DDR5 · WiFi 6E", image:"img/PLACA/GIGABYTE_B650_GAMING_X_AX.webp",
-    specs:{ "Modelo":"GIGABYTE B650 GAMING X AX","Socket":"AM5","Chipset":"B650","Factor forma":"ATX","Memoria":"DDR5","WiFi":"WiFi 6E" } },
-
-  { id:18, name:"B550-PLUS ASUS TUF GAMING WIFI II", brand:"ASUS", category:"placa-am4", price:500, stock:2,
-    sub:"Socket AM4 · ATX · DDR4 · WiFi 6", image:"img/PLACA/B550_PLUS_WIFI_ll.webp",
-    specs:{ "Modelo":"ASUS TUF GAMING B550-PLUS WIFI II","Socket":"AM4","Chipset":"B550","Factor forma":"ATX","Memoria":"DDR4","WiFi":"WiFi 6" } },
-
-  { id:29, name:"Z890 GIGABYTE EAGLE WIFI7", brand:"Gigabyte", category:"placa-lga1851", price:750, stock:1,
-    sub:"Socket LGA1851 · ATX · DDR5 · WiFi 7", image:"img/PLACA/GIGABYTE_Z890_EAGLE_WIFI7.webp",
-    specs:{ "Modelo":"GIGABYTE Z890 EAGLE WIFI7","Socket":"LGA1851 (Intel Core Ultra)","Chipset":"Z890","Factor forma":"ATX","Memoria":"DDR5","WiFi":"WiFi 7" } },
-
-  // ---- MEMORIAS RAM ----
-  { id:19, name:"CORSAIR VENGEANCE RGB 2X16GB DDR5 6400MHZ CL36 BLACK", brand:"Corsair", category:"ddr5", price:1900, stock:1,
-    sub:"32GB (2x16GB) DDR5 6400MHz CL36 · RGB", image:"img/RAM/CORSAIR_VENGEANCE_RGB_DDR5_6400.webp",
-    specs:{ "Capacidad":"32GB (2x16GB)","Tipo":"DDR5","Velocidad":"6400 MHz","Latencia":"CL36","Iluminación":"RGB","Color":"Negro" } },
-
-  { id:31, name:"SILICON POWER XPOWER CYCLONE RGB 2X16GB DDR5 7200MHZ CL34", brand:"Silicon Power", category:"ddr5", price:1850, stock:1,
-    sub:"32GB (2x16GB) DDR5 7200MT/s CL34 · RGB", image:"img/RAM/SILICON_POWER_CYCLONE_RGB_DDR5_7200.webp",
-    specs:{ "Capacidad":"32GB (2x16GB)","Tipo":"DDR5","Velocidad":"7200 MT/s","Latencia":"CL34","Iluminación":"RGB" } },
-
-  { id:20, name:"TEAMGROUP T-FORCE VULCAN 2X8GB DDR5 5200MHZ", brand:"TeamGroup", category:"ddr5", price:750, stock:1, best:true,
-    sub:"16GB (2x8GB) DDR5 5200MHz", image:"img/RAM/TEAMGROUP_TFORCE_VULCAN_DDR5.webp",
-    specs:{ "Capacidad":"16GB (2x8GB)","Tipo":"DDR5","Velocidad":"5200 MHz","Voltaje":"1.25V","Color":"Negro" } },
-
-  { id:21, name:"NETAC WHITE 2X16GB DDR4 3200MHZ", brand:"Netac", category:"ddr4", price:700, stock:1,
-    sub:"32GB (2x16GB) DDR4 3200MHz · Blanca", image:"img/RAM/NETAC_2X16GB_3200MHZ.webp",
-    specs:{ "Capacidad":"32GB (2x16GB)","Tipo":"DDR4","Velocidad":"3200 MHz","Latencia":"CL16","Voltaje":"1.35V","Color":"Blanco" } },
-
-  // ---- ALMACENAMIENTO ----
-  { id:22, name:"SSD M.2 4TB TEAMGROUP T-FORCE G50", brand:"TeamGroup", category:"almacenamiento", price:2100, stock:1, featured:true,
-    sub:"NVMe PCIe 4.0 · 4TB · 5,000 MB/s", image:"img/SSD/SSD_T-FORCE_G50_4TB.webp",
-    specs:{ "Capacidad":"4TB","Interfaz":"NVMe PCIe Gen 4.0","Factor forma":"M.2 2280","Lectura":"5,000 MB/s","Escritura":"4,500 MB/s" } },
-
-  { id:23, name:"SSD M.2 1TB ADATA LEGEND 860", brand:"ADATA", category:"almacenamiento", price:580, stock:1,
-    sub:"NVMe PCIe 4.0 x4 · 1TB · M.2 2280", image:"img/SSD/SSD_ADATA_LEGEND_860_1TB.webp",
-    specs:{ "Capacidad":"1TB (1000GB)","Interfaz":"NVMe PCIe Gen 4.0 x4","Factor forma":"M.2 2280","Lectura":"Hasta 6,000 MB/s" } },
-
-  { id:24, name:"SSD M.2 512GB HIKSEMI WAVE", brand:"Hiksemi", category:"almacenamiento", price:330, stock:1,
-    sub:"NVMe PCIe 3.0 · 512GB · M.2 2280", image:"img/SSD/SSD_HIKSEMI_WAVE_512GB.webp",
-    specs:{ "Capacidad":"512GB","Interfaz":"NVMe PCIe Gen 3.0","Factor forma":"M.2 2280" } },
-
-  // ---- REFRIGERACIÓN ----
-  { id:25, name:"THERMALRIGHT ELITE VISION 360 ARGB WHITE", brand:"Thermalright", category:"refrigeracion-liquida", price:370, stock:1, featured:true,
-    sub:"Líquida AIO 360mm · ARGB · Blanco", image:"img/REFRIGERACION/THERMALRIGHT_ELITE_VISION_360_ARGB_WHITE.webp",
-    specs:{ "Tipo":"Refrigeración líquida AIO","Radiador":"360mm","Ventiladores":"3x 120mm ARGB","Compatibilidad":"Intel & AMD","Color":"Blanco" } },
-
-  { id:26, name:"COOLERMASTER ELITE 240MM BLACK", brand:"Cooler Master", category:"refrigeracion-liquida", price:120, stock:3,
-    sub:"Líquida AIO 240mm · Negro", image:"img/REFRIGERACION/COOLERMASTER_ELITE_240MM.webp",
-    specs:{ "Tipo":"Refrigeración líquida AIO","Radiador":"240mm","Ventiladores":"2x 120mm","Compatibilidad":"Intel & AMD","Color":"Negro" } },
-
-  { id:32, name:"COOLERMASTER ELITE 240MM WHITE", brand:"Cooler Master", category:"refrigeracion-liquida", price:120, stock:1,
-    sub:"Líquida AIO 240mm · Blanco", image:"img/REFRIGERACION/COOLERMASTER_ELITE_240MM_WHITE.webp",
-    specs:{ "Tipo":"Refrigeración líquida AIO","Radiador":"240mm","Ventiladores":"2x 120mm","Compatibilidad":"Intel & AMD","Color":"Blanco" } },
-
-  { id:27, name:"THERMALRIGHT PEERLESS ASSASSIN 120 DIGITAL ARGB WHITE", brand:"Thermalright", category:"refrigeracion-aire", price:170, stock:2, best:true,
-    sub:"Doble torre · Pantalla digital · ARGB · Blanco", image:"img/REFRIGERACION/THERMALRIGHT_RGB.webp",
-    specs:{ "Tipo":"Disipador por aire doble torre","TDP":"245W","Ventiladores":"2x 120mm ARGB","Pantalla":"Digital (temperatura CPU)","Compatibilidad":"Intel LGA1700/1851 & AMD AM4/AM5","Color":"Blanco" } }
-];
-
-/* ---------- Categorías populares (imagen tomada de un producto real) ---------- */
-const popularCategories = [
-  { group:'procesador',     label:'Procesadores',      img:'img/PROCESADOR/RYZEN_7_9800X3d.webp' },
-  { group:'placas',         label:'Placas Madre',      img:'img/PLACA/B850M-E_ASUS_TUF_WIFI.webp' },
-  { group:'gpu',            label:'Tarjetas de Video', img:'img/GRAFICAS/RTX_5060_8GB.webp', icon:'fa-display' },
-  { group:'ram',            label:'Memorias RAM',      img:'img/RAM/TEAMGROUP_TFORCE_VULCAN_DDR5.webp' },
-  { group:'almacenamiento', label:'Almacenamiento',    img:'img/SSD/SSD_T-FORCE_G50_4TB.webp' },
-  { group:'refrigeracion',  label:'Refrigeración',     img:'img/REFRIGERACION/THERMALRIGHT_ELITE_VISION_360_ARGB_WHITE.webp' }
-];
+async function loadCatalog(){
+  const v = Math.floor(Date.now() / 60000);   // cambia cada minuto: nunca se queda una versión vieja
+  const res = await fetch(`productos.json?v=${v}`, { cache: 'no-cache' });
+  if(!res.ok) throw new Error('HTTP ' + res.status);
+  const data = await res.json();
+  products = (data.productos || []).filter(p => CATEGORIAS[p.category] && enStock(p));
+}
 
 /* ---------- Estado ---------- */
 let currentProduct = null;
 let currentGroup   = null;
 let currentSort    = 'default';
-let onlyInStock    = false;
 let searchTerm     = '';
 const cart         = new Map();   // id -> qty
 const favorites    = new Set();
@@ -217,11 +44,11 @@ const WA_BASE = `https://wa.me/${WA_NUMBER}?text=`;
 /* =========================================================
    UTILIDADES
    ========================================================= */
-const money = n => 'S/ ' + n.toLocaleString('es-PE');
+const money = n => 'S/ ' + Number(n).toLocaleString('es-PE');
 const esc = t => String(t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const byId = id => products.find(x => x.id === id);
 const groupOf = cat => Object.keys(groups).find(g => groups[g].cats.includes(cat));
-const iconOf = cat => categoryIcons[cat] || 'fa-microchip';
+const iconOf = cat => (GRUPOS[(CATEGORIAS[cat] || {}).grupo] || {}).icon || 'fa-microchip';
 const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 
 function stockInfo(stock){
@@ -293,7 +120,7 @@ function productCard(p){
         <i class="fa${favorites.has(p.id)?'s':'r'} fa-heart"></i>
       </button>
       ${placeholderHtml(p)}
-      <img src="${p.image}" alt="${esc(p.name)}" loading="lazy" onerror="imgFallback(this)">
+      <img src="${esc(p.image || '')}" alt="${esc(p.name)}" loading="lazy" onerror="imgFallback(this)">
     </div>
     <div class="p-body">
       <span class="p-cat">${cat}</span>
@@ -319,12 +146,15 @@ function toggleFav(id, el){
   else { favorites.add(id); el.classList.add('on'); el.innerHTML = '<i class="fas fa-heart"></i>'; toast('Guardado en favoritos'); }
 }
 
+const CAT_ORDER = Object.keys(CATEGORIAS);
+const catRank = p => CAT_ORDER.indexOf(p.category);
+
 function sortList(list, mode){
   const out = [...list];
   if(mode === 'price-asc')  out.sort((a,b)=> a.price - b.price);
-  if(mode === 'price-desc') out.sort((a,b)=> b.price - a.price);
-  if(mode === 'name-asc')   out.sort((a,b)=> a.name.localeCompare(b.name));
-  if(mode === 'stock')      out.sort((a,b)=> b.stock - a.stock);
+  else if(mode === 'price-desc') out.sort((a,b)=> b.price - a.price);
+  else if(mode === 'name-asc')   out.sort((a,b)=> a.name.localeCompare(b.name));
+  else out.sort((a,b)=> catRank(a) - catRank(b) || b.price - a.price);   // relevancia: categoría y luego precio
   return out;
 }
 
@@ -347,15 +177,16 @@ function renderHome(){
   fill('featuredGrid',    'featuredSection',    pick(p => p.featured,  5));
   fill('bestsellersGrid', 'bestsellersSection', pick(p => p.best,      5));
 
-  document.getElementById('categoryGrid').innerHTML = popularCategories.map(c => {
-    const n = products.filter(p => groups[c.group].cats.includes(p.category)).length;
-    if(!n) return '';
+  // Categorías: una tarjeta por grupo con productos, con la foto de su producto más destacado
+  document.getElementById('categoryGrid').innerHTML = activeGroups().map(g => {
+    const items = products.filter(p => groups[g].cats.includes(p.category))
+      .sort((a,b)=> (b.featured ? 1 : 0) - (a.featured ? 1 : 0) || b.price - a.price);
     return `
-    <div class="c-card" onclick="filterByGroup('${c.group}')">
-      <div class="c-ph"><i class="fas ${c.icon || iconOf(groups[c.group].cats[0])}"></i></div>
-      <img src="${c.img}" alt="${c.label}" loading="lazy" onerror="imgFallback(this)">
+    <div class="c-card" onclick="filterByGroup('${g}')">
+      <div class="c-ph"><i class="fas ${GRUPOS[g].icon}"></i></div>
+      <img src="${esc(items[0].image || '')}" alt="${esc(groups[g].label)}" loading="lazy" onerror="imgFallback(this)">
       <div class="c-label">
-        <div><b>${c.label}</b><small>${plural(n, 'producto', 'productos')}</small></div>
+        <div><b>${esc(groups[g].label)}</b><small>${plural(items.length, 'producto', 'productos')}</small></div>
         <i class="fas fa-arrow-right"></i>
       </div>
     </div>`;
@@ -365,9 +196,29 @@ function renderHome(){
   products.forEach(p => { if(p.brand) brands[p.brand] = (brands[p.brand] || 0) + 1; });
   document.getElementById('brandRow').innerHTML = Object.entries(brands)
     .sort((a,b)=> b[1] - a[1] || a[0].localeCompare(b[0]))
-    .map(([b,n]) => `<button class="brand-chip" onclick="searchBrand('${esc(b)}')">${esc(b)}<small>${n}</small></button>`)
+    .map(([b,n]) => `<button class="brand-chip" data-brand="${esc(b)}">${esc(b)}<small>${n}</small></button>`)
     .join('');
 
+}
+
+/* Grupos que tienen al menos un producto en stock (en el orden del menú) */
+function activeGroups(){
+  return Object.keys(groups).filter(g => products.some(p => groups[g].cats.includes(p.category)));
+}
+
+/* Menú de categorías: Inicio + grupos con productos + Ver todo */
+function buildNav(){
+  const all = document.querySelector('#catNav .cat-all');
+  document.querySelectorAll('#catNav .cat-link[data-group]').forEach(l => l.remove());
+  activeGroups().forEach(g => {
+    const a = document.createElement('a');
+    a.href = '#';
+    a.className = 'cat-link';
+    a.dataset.group = g;
+    a.innerHTML = `<i class="fas ${GRUPOS[g].icon}"></i><span>${esc(GRUPOS[g].menu)}</span>`;
+    a.addEventListener('click', e => { e.preventDefault(); filterByGroup(g); });
+    all.before(a);
+  });
 }
 
 const homeSections = ['heroSection','featuredSection','categoriesSection',
@@ -391,7 +242,6 @@ function goHome(){
   currentGroup = null;
   searchTerm = '';
   currentSort = 'default';
-  onlyInStock = false;
   const si = document.getElementById('searchInput');
   if(si) si.value = '';
   setActiveLink(document.querySelector('.cat-link'));
@@ -409,8 +259,7 @@ function filterByGroup(group){
   const si = document.getElementById('searchInput');
   if(si) si.value = '';
 
-  const links = [...document.querySelectorAll('.cat-link')];
-  setActiveLink(links.find(l => (l.getAttribute('onclick')||'').includes(`'${group}'`)));
+  setActiveLink(document.querySelector(`.cat-link[data-group="${group}"]`));
 
   document.getElementById('catNav').classList.remove('open');
   document.getElementById('catalogTitle').innerHTML =
@@ -451,30 +300,24 @@ function getFilteredList(){
       (p.brand||'').toLowerCase().includes(t) ||
       (p.sub||'').toLowerCase().includes(t) ||
       (categoryLabels[p.category]||'').toLowerCase().includes(t) ||
-      Object.values(p.specs).join(' ').toLowerCase().includes(t)
+      Object.values(p.specs || {}).join(' ').toLowerCase().includes(t)
     );
   } else if(currentGroup && groups[currentGroup]){
     list = list.filter(p => groups[currentGroup].cats.includes(p.category));
   }
 
-  if(onlyInStock) list = list.filter(p => p.stock > 0);
   return sortList(list, currentSort);
 }
 
 function filtersBarHtml(count){
   return `
     <div class="filters-bar">
-      <label class="filter-toggle">
-        <input type="checkbox" ${onlyInStock?'checked':''} onchange="onStockFilter(this)">
-        Solo mostrar con stock
-      </label>
       <span class="results-info"><strong>${count}</strong> producto(s)${searchTerm?` para "<strong>${esc(searchTerm)}</strong>"`:''}</span>
       <select class="sort-select" onchange="onSortChange(this)">
         <option value="default"    ${currentSort==='default'?'selected':''}>Ordenar por: Relevancia</option>
         <option value="price-asc"  ${currentSort==='price-asc'?'selected':''}>Precio: menor a mayor</option>
         <option value="price-desc" ${currentSort==='price-desc'?'selected':''}>Precio: mayor a menor</option>
         <option value="name-asc"   ${currentSort==='name-asc'?'selected':''}>Nombre: A – Z</option>
-        <option value="stock"      ${currentSort==='stock'?'selected':''}>Mayor stock</option>
       </select>
     </div>`;
 }
@@ -507,8 +350,7 @@ function renderCatalog(){
 
   if(defs){
     const sections = defs.map(s => {
-      let items = products.filter(p => s.cats.includes(p.category));
-      if(onlyInStock) items = items.filter(p => p.stock > 0);
+      const items = products.filter(p => s.cats.includes(p.category));
       return { label: s.label, items: sortList(items, currentSort) };
     }).filter(s => s.items.length > 0);
 
@@ -523,7 +365,6 @@ function renderCatalog(){
     (list.length ? `<div class="p-grid">${list.map(productCard).join('')}</div>` : emptyStateHtml());
 }
 
-function onStockFilter(cb){ onlyInStock = cb.checked; renderCatalog(); }
 function onSortChange(sel){ currentSort = sel.value; renderCatalog(); }
 
 /* =========================================================
@@ -557,13 +398,13 @@ function openModal(id){
   document.getElementById('modalPh').outerHTML = placeholderHtml(p).replace('class="ph"', 'class="ph" id="modalPh"');
   const img = document.getElementById('modalImage');
   img.onerror = function(){ imgFallback(this); };
-  img.src = p.image;
+  img.src = p.image || '';
   img.alt = p.name;
   document.getElementById('modalCat').textContent  = categoryLabels[p.category] || '';
   document.getElementById('modalName').textContent = p.name;
   document.getElementById('modalStock').innerHTML  = `<span class="p-stock ${s.cls}"><span class="dot"></span>${s.text}</span>`;
   document.getElementById('modalPrice').textContent = money(p.price);
-  document.getElementById('modalSpecs').innerHTML = Object.entries(p.specs)
+  document.getElementById('modalSpecs').innerHTML = Object.entries(p.specs || {})
     .map(([k,v]) => `<div class="spec-row"><span>${esc(k)}</span><span>${esc(v)}</span></div>`).join('');
 
   document.getElementById('productModal').classList.add('open');
@@ -634,7 +475,7 @@ function updateCart(){
   } else {
     box.innerHTML = items.map(({p,qty}) => `
       <div class="cart-item">
-        <div class="ci-media"><i class="fas ${iconOf(p.category)}"></i><img src="${p.image}" alt="${esc(p.name)}" onerror="imgFallback(this)"></div>
+        <div class="ci-media"><i class="fas ${iconOf(p.category)}"></i><img src="${esc(p.image || '')}" alt="${esc(p.name)}" onerror="imgFallback(this)"></div>
         <div class="ci-info">
           <div class="ci-name">${esc(p.name)}</div>
           <div class="ci-price">${money(p.price * qty)}</div>
@@ -669,9 +510,25 @@ function closeCart(){
 /* =========================================================
    INIT
    ========================================================= */
+function showLoadError(){
+  document.getElementById('featuredGrid').innerHTML = `
+    <div class="load-error">
+      <i class="fas fa-triangle-exclamation"></i>
+      <p>No pudimos cargar los productos.</p>
+      <button class="link-more" onclick="location.reload()"><i class="fas fa-rotate"></i> Volver a intentar</button>
+    </div>`;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  renderHome();
   updateCart();
+  loadCatalog()
+    .then(() => { buildNav(); renderHome(); })
+    .catch(err => { console.error('No se pudo cargar productos.json', err); showLoadError(); });
+
+  document.getElementById('brandRow').addEventListener('click', e => {
+    const chip = e.target.closest('.brand-chip');
+    if(chip) searchBrand(chip.dataset.brand);
+  });
 
   const si = document.getElementById('searchInput');
   if(si){
