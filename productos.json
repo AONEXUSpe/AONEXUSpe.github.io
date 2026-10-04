@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-04T02:20:53.138Z",
+  "actualizado": "2026-10-04T02:21:36.880Z",
   "productos": [
     {
       "id": 2,
@@ -81,7 +81,7 @@
       "brand": "AMD",
       "category": "amd",
       "price": 900,
-      "stock": 1,
+      "stock": 2,
       "sub": "8 núcleos / 16 hilos · AM5",
       "image": "img/PROCESADOR/RYZEN_7_7700X.webp",
       "specs": {
