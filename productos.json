@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-04T02:20:12.985Z",
+  "actualizado": "2026-10-04T02:20:31.128Z",
   "productos": [
     {
       "id": 2,
@@ -524,7 +524,7 @@
       "brand": "Cooler Master",
       "category": "refrigeracion-liquida",
       "price": 120,
-      "stock": 3,
+      "stock": 0,
       "sub": "Líquida AIO 240mm · Negro",
       "image": "img/REFRIGERACION/COOLERMASTER_ELITE_240MM.webp",
       "specs": {
