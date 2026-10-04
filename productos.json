@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-04T02:19:47.045Z",
+  "actualizado": "2026-10-04T02:20:12.985Z",
   "productos": [
     {
       "id": 2,
@@ -404,7 +404,7 @@
       "brand": "Silicon Power",
       "category": "ddr5",
       "price": 1850,
-      "stock": 1,
+      "stock": 0,
       "sub": "32GB (2x16GB) DDR5 7200MT/s CL34 · RGB",
       "image": "img/RAM/SILICON_POWER_CYCLONE_RGB_DDR5_7200.webp",
       "specs": {
