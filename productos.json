@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-04T02:20:31.128Z",
+  "actualizado": "2026-10-04T02:20:53.138Z",
   "productos": [
     {
       "id": 2,
@@ -421,7 +421,7 @@
       "brand": "TeamGroup",
       "category": "ddr5",
       "price": 750,
-      "stock": 1,
+      "stock": 0,
       "best": true,
       "sub": "16GB (2x8GB) DDR5 5200MHz",
       "image": "img/RAM/TEAMGROUP_TFORCE_VULCAN_DDR5.webp",
