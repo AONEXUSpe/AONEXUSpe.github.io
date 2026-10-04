@@ -465,6 +465,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .results-info strong{color:var(--cyan)}
 
 .empty-state{text-align:center;padding:80px 20px;color:#5a678c}
+.loading-msg,.load-error{grid-column:1/-1;text-align:center;padding:50px 20px;color:var(--muted);font-size:14px}
+.load-error i{font-size:34px;color:#fbbf24;display:block;margin-bottom:12px}
+.load-error p{margin-bottom:10px;color:#c3cce6}
+.load-error .link-more{justify-content:center}
 .empty-state > i{font-size:56px;opacity:.4;margin-bottom:18px;display:block}
 .empty-state p{font-size:17px;color:#8b97b8}
 .empty-state small{font-size:13.5px;display:block;margin-top:4px}
@@ -912,6 +916,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   }
   .block .p-grid::-webkit-scrollbar{display:none}
   .block .p-card{scroll-snap-align:start}
+  .block .p-grid .loading-msg,.block .p-grid .load-error{width:calc(100vw - 40px)}
   .p-name{font-size:12.5px;min-height:33px}
   .p-price{font-size:17px}
   .p-media{margin:8px 8px 0}
