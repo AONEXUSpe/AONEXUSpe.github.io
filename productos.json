@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-05T22:47:47.569Z",
+  "actualizado": "2026-10-05T23:01:16.728Z",
   "productos": [
     {
       "id": 2,
@@ -239,7 +239,7 @@
       "name": "B850-PRO ASUS TUF WIFI7 W NEO",
       "brand": "ASUS",
       "category": "placa-am5",
-      "price": 780,
+      "price": 800,
       "stock": 1,
       "sub": "AM5 · AMD B850 · ATX · DDR5",
       "image": "img/PLACA/B850-PRO_ASUS_TUF_WIFI7_W_NEO.webp",
