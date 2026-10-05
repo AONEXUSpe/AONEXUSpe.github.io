@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-05T09:15:22.296Z",
+  "actualizado": "2026-10-05T09:15:46.701Z",
   "productos": [
     {
       "id": 2,
@@ -581,7 +581,7 @@
       "price": 120,
       "stock": 1,
       "sub": "Refrigeración líquida AIO · 240 mm · 120 mm · BLACK",
-      "image": "img/REFRIGERACION/MSI_MAG_A13_240MM_BLACK.webp",
+      "image": "img/REFRIGERACION/MSI_MAG_A13_240MM_BLACK_2.webp",
       "specs": {
         "Tipo": "Refrigeración líquida AIO",
         "Radiador": "240 mm",
