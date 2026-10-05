@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-05T09:20:18.331Z",
+  "actualizado": "2026-10-05T09:23:51.767Z",
   "productos": [
     {
       "id": 2,
@@ -362,6 +362,25 @@
         "Factor forma": "ATX",
         "Memoria": "DDR4",
         "WiFi": "WiFi 6"
+      }
+    },
+    {
+      "id": 35,
+      "name": "Z890-H ROG STRIX GAMING WIFI",
+      "brand": "ASUS",
+      "category": "placa-lga1851",
+      "price": 1000,
+      "stock": 1,
+      "sub": "LGA1851 · Intel Z890 · ATX · DDR5",
+      "image": "img/PLACA/Z890-H_ROG_STRIX_GAMING_WIFI.webp",
+      "specs": {
+        "Modelo": "ROG STRIX Z890-H GAMING WIFI",
+        "Socket": "LGA1851",
+        "Chipset": "Intel Z890",
+        "Factor forma": "ATX",
+        "Memoria": "DDR5",
+        "WiFi": "WiFi 7",
+        "Bluetooth": "5.4"
       }
     },
     {
