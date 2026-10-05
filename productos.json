@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-05T09:16:30.898Z",
+  "actualizado": "2026-10-05T09:17:26.034Z",
   "productos": [
     {
       "id": 2,
@@ -7,7 +7,7 @@
       "brand": "AMD",
       "category": "amd",
       "price": 2600,
-      "stock": 1,
+      "stock": 0,
       "featured": true,
       "sub": "16 núcleos / 32 hilos · 3D V-Cache · AM5",
       "image": "img/PROCESADOR/RYZEN_9_9500X3D.webp",
@@ -154,7 +154,7 @@
       "brand": "Intel",
       "category": "intel",
       "price": 1400,
-      "stock": 1,
+      "stock": 0,
       "sub": "20 núcleos / 28 hilos · LGA1700",
       "image": "img/PROCESADOR/INTEL_CORE_I7_14700K.webp",
       "specs": {
@@ -189,7 +189,7 @@
       "brand": "Intel",
       "category": "intel",
       "price": 1300,
-      "stock": 1,
+      "stock": 0,
       "sub": "24 núcleos / 24 hilos · LGA1851",
       "image": "img/PROCESADOR/ULTRA_7_270K_PLUS.webp",
       "specs": {
@@ -205,7 +205,7 @@
       "brand": "Intel",
       "category": "intel",
       "price": 500,
-      "stock": 2,
+      "stock": 0,
       "sub": "10 núcleos / 10 hilos · LGA1851",
       "image": "img/PROCESADOR/ULTRA_5_225F.webp",
       "specs": {
