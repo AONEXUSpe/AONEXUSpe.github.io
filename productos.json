@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-05T23:01:16.728Z",
+  "actualizado": "2026-10-05T23:31:42.055Z",
   "productos": [
     {
       "id": 2,
@@ -350,7 +350,7 @@
       "brand": "MSI",
       "category": "placa-am5",
       "price": 580,
-      "stock": 1,
+      "stock": 0,
       "featured": true,
       "sub": "Socket AM5 · ATX · DDR5 · WiFi 6E",
       "image": "img/PLACA/B850-S_MSI_PRO_WIFI6E.webp",
