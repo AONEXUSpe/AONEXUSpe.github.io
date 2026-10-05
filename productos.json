@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-04T02:34:54.429Z",
+  "actualizado": "2026-10-05T09:08:29.060Z",
   "productos": [
     {
       "id": 2,
@@ -127,6 +127,25 @@
         "Socket": "AM4",
         "TDP": "65W",
         "Cooler": "Incluido (Wraith Stealth)"
+      }
+    },
+    {
+      "id": 33,
+      "name": "ULTRA 9 285K",
+      "brand": "INTEL",
+      "category": "intel",
+      "price": 2100,
+      "stock": 1,
+      "sub": "24C (8P + 16E) / 24T · 3.7 GHz · 5.7 GHz · LGA1851",
+      "image": "img/PROCESADOR/ULTRA_9_285K.webp",
+      "specs": {
+        "Núcleos / Hilos": "24C (8P + 16E) / 24T",
+        "Frecuencia base": "3.7 GHz",
+        "Frecuencia turbo": "5.7 GHz",
+        "Socket": "LGA1851",
+        "TDP": "125W",
+        "Graficos Integrados": "Si",
+        "Multiplicador": "Desbloqueado (K)"
       }
     },
     {
