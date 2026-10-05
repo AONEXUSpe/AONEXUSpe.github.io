@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-05T22:31:36.172Z",
+  "actualizado": "2026-10-05T22:47:47.569Z",
   "productos": [
     {
       "id": 2,
@@ -369,7 +369,7 @@
       "brand": "ASUS",
       "category": "placa-am4",
       "price": 500,
-      "stock": 2,
+      "stock": 1,
       "best": true,
       "sub": "Socket AM4 · ATX · DDR4 · WiFi 6",
       "image": "img/PLACA/B550_PLUS_WIFI_ll.webp",
