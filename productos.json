@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-05T09:17:26.034Z",
+  "actualizado": "2026-10-05T09:20:18.331Z",
   "productos": [
     {
       "id": 2,
@@ -25,7 +25,7 @@
       "name": "RYZEN 7 9800X3D",
       "brand": "AMD",
       "category": "amd",
-      "price": 1750,
+      "price": 1800,
       "stock": 1,
       "featured": true,
       "sub": "8 núcleos / 16 hilos · 3D V-Cache · AM5",
@@ -37,6 +37,23 @@
         "Socket": "AM5",
         "TDP": "120W",
         "3D V-Cache": "Sí"
+      }
+    },
+    {
+      "id": 4,
+      "name": "RYZEN 9 9900X",
+      "brand": "AMD",
+      "category": "amd",
+      "price": 1600,
+      "stock": 1,
+      "sub": "12 núcleos / 24 hilos · AM5",
+      "image": "img/PROCESADOR/RYZEN_9_9900X.webp",
+      "specs": {
+        "Núcleos / Hilos": "12C / 24T",
+        "Frecuencia base": "4.4 GHz",
+        "Frecuencia turbo": "Hasta 5.6 GHz",
+        "Socket": "AM5",
+        "TDP": "120W"
       }
     },
     {
@@ -56,23 +73,6 @@
         "Socket": "AM5",
         "TDP": "120W",
         "3D V-Cache": "Sí"
-      }
-    },
-    {
-      "id": 4,
-      "name": "RYZEN 9 9900X",
-      "brand": "AMD",
-      "category": "amd",
-      "price": 1400,
-      "stock": 1,
-      "sub": "12 núcleos / 24 hilos · AM5",
-      "image": "img/PROCESADOR/RYZEN_9_9900X.webp",
-      "specs": {
-        "Núcleos / Hilos": "12C / 24T",
-        "Frecuencia base": "4.4 GHz",
-        "Frecuencia turbo": "Hasta 5.6 GHz",
-        "Socket": "AM5",
-        "TDP": "120W"
       }
     },
     {
