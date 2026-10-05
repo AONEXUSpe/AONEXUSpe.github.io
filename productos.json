@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-05T09:08:29.060Z",
+  "actualizado": "2026-10-05T09:15:22.296Z",
   "productos": [
     {
       "id": 2,
@@ -571,6 +571,23 @@
         "Ventiladores": "2x 120mm",
         "Compatibilidad": "Intel & AMD",
         "Color": "Blanco"
+      }
+    },
+    {
+      "id": 34,
+      "name": "MSI MAG A13 240MM BLACK",
+      "brand": "MSI",
+      "category": "refrigeracion-liquida",
+      "price": 120,
+      "stock": 1,
+      "sub": "Refrigeración líquida AIO · 240 mm · 120 mm · BLACK",
+      "image": "img/REFRIGERACION/MSI_MAG_A13_240MM_BLACK.webp",
+      "specs": {
+        "Tipo": "Refrigeración líquida AIO",
+        "Radiador": "240 mm",
+        "Ventiladores": "120 mm",
+        "Compatibilidad": "Intel LGA1851 / 1700 y AMD AM5 / AM4",
+        "Color": "BLACK"
       }
     },
     {
