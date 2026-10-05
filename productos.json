@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-05T15:40:52.906Z",
+  "actualizado": "2026-10-05T22:31:36.172Z",
   "productos": [
     {
       "id": 2,
@@ -229,6 +229,24 @@
         "Modelo": "ASUS ROG STRIX B850-F GAMING WIFI NEO",
         "Socket": "AM5",
         "Chipset": "B850",
+        "Factor forma": "ATX",
+        "Memoria": "DDR5",
+        "WiFi": "WiFi 7"
+      }
+    },
+    {
+      "id": 36,
+      "name": "B850-PRO ASUS TUF WIFI7 W NEO",
+      "brand": "ASUS",
+      "category": "placa-am5",
+      "price": 780,
+      "stock": 1,
+      "sub": "AM5 · AMD B850 · ATX · DDR5",
+      "image": "img/PLACA/B850-PRO_ASUS_TUF_WIFI7_W_NEO.webp",
+      "specs": {
+        "Modelo": "TUF GAMING B850-PRO WIFI7 W NEO",
+        "Socket": "AM5",
+        "Chipset": "AMD B850",
         "Factor forma": "ATX",
         "Memoria": "DDR5",
         "WiFi": "WiFi 7"
