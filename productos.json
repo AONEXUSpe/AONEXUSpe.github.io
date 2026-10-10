@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-05T23:31:42.055Z",
+  "actualizado": "2026-10-10T01:40:47.358Z",
   "productos": [
     {
       "id": 2,
@@ -515,7 +515,7 @@
       "brand": "TeamGroup",
       "category": "almacenamiento",
       "price": 2000,
-      "stock": 1,
+      "stock": 0,
       "featured": true,
       "sub": "NVMe PCIe 4.0 · 4TB · 5,000 MB/s",
       "image": "img/SSD/SSD_T-FORCE_G50_4TB.webp",
@@ -549,7 +549,7 @@
       "brand": "Hiksemi",
       "category": "almacenamiento",
       "price": 330,
-      "stock": 1,
+      "stock": 0,
       "sub": "NVMe PCIe 3.0 · 512GB · M.2 2280",
       "image": "img/SSD/SSD_HIKSEMI_WAVE_512GB.webp",
       "specs": {
