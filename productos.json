@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-10T01:40:47.358Z",
+  "actualizado": "2026-10-10T19:01:05.786Z",
   "productos": [
     {
       "id": 2,
@@ -277,7 +277,7 @@
       "brand": "ASUS",
       "category": "placa-am5",
       "price": 700,
-      "stock": 1,
+      "stock": 0,
       "sub": "Socket AM5 · ATX · DDR5 · WiFi 6E",
       "image": "img/PLACA/B650-A_ASUS_ROG_STRIX_GAMING_WIFI.webp",
       "specs": {
