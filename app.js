@@ -18,17 +18,36 @@ const subGroups = Object.fromEntries(Object.entries(groups)
   .filter(([, g]) => g.cats.length > 1)
   .map(([k, g]) => [k, g.cats.map(c => ({ label: CATEGORIAS[c].seccion || CATEGORIAS[c].label, cats: [c] }))]));
 
-/* ---------- Catálogo: se carga desde productos.json ----------
-   Los productos se editan desde el panel de stock (admin.html).
+/* ---------- Catálogo: stock y precios compartidos con AO Nexus Central ----------
+   Los productos se editan desde Mi web en AO Nexus Central.
    Solo se muestran los que tienen unidades en stock. */
 let products = [];
 
+const AO_CATALOG_SOURCE = Object.freeze({"url": "https://vundymszmdbkhuliglwz.supabase.co", "key": "sb_publishable_4cIHkmrCiUDRGVEaEGrhdw_vFe3xdrg"});
+let loadingCatalogue = null;
 async function loadCatalog(){
-  const v = Math.floor(Date.now() / 60000);   // cambia cada minuto: nunca se queda una versión vieja
-  const res = await fetch(`productos.json?v=${v}`, { cache: 'no-cache' });
-  if(!res.ok) throw new Error('HTTP ' + res.status);
-  const data = await res.json();
-  products = (data.productos || []).filter(p => CATEGORIAS[p.category] && enStock(p));
+  if(loadingCatalogue)return loadingCatalogue;
+  loadingCatalogue=(async()=>{
+    const response=await fetch(AO_CATALOG_SOURCE.url+'/rest/v1/rpc/ao_catalog_snapshot',{
+      method:'POST',headers:{'Content-Type':'application/json',apikey:AO_CATALOG_SOURCE.key},
+      body:'{}',cache:'no-store',signal:AbortSignal.timeout(12000)
+    });
+    if(!response.ok)throw new Error('No se pudo consultar el catálogo actualizado.');
+    const data=await response.json();
+    if(!data||!Array.isArray(data.productos))throw new Error('Respuesta de catálogo inválida.');
+    products=data.productos.filter(p=>CATEGORIAS[p.category]&&enStock(p));
+    for(const [id,qty] of cart){const p=products.find(p=>p.id===id);if(!p)cart.delete(id);else if(qty>p.stock)cart.set(id,p.stock);}
+  })().finally(()=>{loadingCatalogue=null;});
+  return loadingCatalogue;
+}
+async function refreshCatalogue(){
+  if(document.hidden)return;
+  try{
+    await loadCatalog();buildNav();
+    if(currentGroup||searchTerm)renderCatalog();else renderHome();
+    if(currentProduct&&!products.some(p=>p.id===currentProduct.id))closeModal();
+    updateCart();
+  }catch(error){console.warn('El catálogo no pudo actualizarse.',error);}
 }
 
 /* ---------- Estado ---------- */
@@ -521,9 +540,12 @@ function showLoadError(){
 
 document.addEventListener('DOMContentLoaded', () => {
   updateCart();
+  setInterval(refreshCatalogue,60000);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshCatalogue();});
+  window.addEventListener('focus',refreshCatalogue);
   loadCatalog()
     .then(() => { buildNav(); renderHome(); })
-    .catch(err => { console.error('No se pudo cargar productos.json', err); showLoadError(); });
+    .catch(err => { console.error('No se pudo cargar el catálogo compartido', err); showLoadError(); });
 
   document.getElementById('brandRow').addEventListener('click', e => {
     const chip = e.target.closest('.brand-chip');
