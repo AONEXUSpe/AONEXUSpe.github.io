@@ -13,10 +13,18 @@ const groups = Object.fromEntries(Object.entries(GRUPOS).map(([g, info]) => [g, 
   cats: Object.keys(CATEGORIAS).filter(c => CATEGORIAS[c].grupo === g)
 }]));
 
-/* Los grupos con varias categorías se muestran divididos en secciones */
-const subGroups = Object.fromEntries(Object.entries(groups)
-  .filter(([, g]) => g.cats.length > 1)
-  .map(([k, g]) => [k, g.cats.map(c => ({ label: CATEGORIAS[c].seccion || CATEGORIAS[c].label, cats: [c] }))]));
+/* Pestañas de cada grupo (AMD / Intel, DDR5 / DDR4…), según "pestana" en categorias.js.
+   Una pestaña puede juntar varias categorías (ej: AMD = Socket AM5 + Socket AM4). */
+const tabs = Object.fromEntries(Object.entries(groups).map(([g, info]) => {
+  const list = [];
+  info.cats.forEach(c => {
+    const label = CATEGORIAS[c].pestana || CATEGORIAS[c].label;
+    let tab = list.find(t => t.label === label);
+    if(!tab) list.push(tab = { label, cats: [] });
+    tab.cats.push(c);
+  });
+  return [g, list];
+}));
 
 /* ---------- Catálogo: stock y precios compartidos con AO Nexus Central ----------
    Los productos se editan desde Mi web en AO Nexus Central.
@@ -53,6 +61,7 @@ async function refreshCatalogue(){
 /* ---------- Estado ---------- */
 let currentProduct = null;
 let currentGroup   = null;
+let currentTab     = 0;       // índice en tabs[currentGroup]
 let currentSort    = 'default';
 let searchTerm     = '';
 const cart         = new Map();   // id -> qty
@@ -274,6 +283,7 @@ function goHome(){
    ========================================================= */
 function filterByGroup(group){
   currentGroup = group;
+  currentTab = 0;
   searchTerm = '';
   const si = document.getElementById('searchInput');
   if(si) si.value = '';
@@ -359,15 +369,56 @@ function sectionsHtml(sections){
   `).join('');
 }
 
+/* Barra de pestañas de la categoría (solo si hay más de una con productos) */
+function tabsHtml(available){
+  if(available.length < 2) return '';
+  const all = tabs[currentGroup];
+  return `
+    <div class="subcat-tabs" role="tablist">
+      ${available.map(t => {
+        const i = all.indexOf(t);
+        const n = products.filter(p => t.cats.includes(p.category)).length;
+        return `<button class="subcat-tab ${i === currentTab ? 'active' : ''}" role="tab" aria-selected="${i === currentTab}" onclick="selectTab(${i})">${esc(t.label)}<small>${n}</small></button>`;
+      }).join('')}
+    </div>`;
+}
+
+/* Categoría: solo se muestran los productos de la pestaña elegida */
+function groupHtml(){
+  const all = tabs[currentGroup];
+  const available = all.filter(t => products.some(p => t.cats.includes(p.category)));
+  // Si la pestaña elegida se quedó sin stock, se abre la primera que tenga productos
+  if(!available.includes(all[currentTab])) currentTab = all.indexOf(available[0]);
+  const tab = all[currentTab];
+  if(!tab) return filtersBarHtml(0) + emptyStateHtml();
+
+  const sections = tab.cats.map(c => ({
+    label: CATEGORIAS[c].seccion || CATEGORIAS[c].label,
+    items: sortList(products.filter(p => p.category === c), currentSort)
+  })).filter(s => s.items.length > 0);
+  const total = sections.reduce((a, s) => a + s.items.length, 0);
+
+  // Con una sola categoría en la pestaña no hace falta subtítulo (la pestaña ya lo dice)
+  const body = tab.cats.length > 1
+    ? sectionsHtml(sections)
+    : `<div class="p-grid">${sections[0].items.map(productCard).join('')}</div>`;
+  return tabsHtml(available) + filtersBarHtml(total) + body;
+}
+
+function selectTab(i){ currentTab = i; renderCatalog(); }
+
 function renderCatalog(){
   const box = document.getElementById('productsContainer');
 
-  // ---- Secciones: subcategorías de un grupo, o todos los grupos en "Todos los productos" ----
-  let defs = null;
-  if(!searchTerm && currentGroup && subGroups[currentGroup]) defs = subGroups[currentGroup];
-  else if(!searchTerm && !currentGroup) defs = Object.values(groups);
+  // ---- Categoría con sus pestañas ----
+  if(!searchTerm && currentGroup && tabs[currentGroup]){
+    box.innerHTML = groupHtml();
+    return;
+  }
 
-  if(defs){
+  // ---- Secciones: todos los grupos en "Todos los productos" ----
+  if(!searchTerm && !currentGroup){
+    const defs = Object.values(groups);
     const sections = defs.map(s => {
       const items = products.filter(p => s.cats.includes(p.category));
       return { label: s.label, items: sortList(items, currentSort) };
@@ -378,7 +429,7 @@ function renderCatalog(){
     return;
   }
 
-  // ---- Vista plana (búsqueda y grupos sin subcategorías) ----
+  // ---- Vista plana (búsqueda) ----
   const list = getFilteredList();
   box.innerHTML = filtersBarHtml(list.length) +
     (list.length ? `<div class="p-grid">${list.map(productCard).join('')}</div>` : emptyStateHtml());
